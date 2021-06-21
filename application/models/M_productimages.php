@@ -16,6 +16,13 @@ class M_productimages extends CI_Model
         return $this->db->get()->result();
     }
 
+    public function get_data($id_images){
+        $this->db->select('*');
+        $this->db->from('tb_product_images');
+        $this->db->where('id_images', $id_images);
+        return $this->db->get()->row();
+    }
+
     public function get_images($id_product){
         $this->db->select('*');
         $this->db->from('tb_product_images');

@@ -61,7 +61,7 @@ class Productimages extends CI_Controller
                 );
                 $this->m_productimages->add($data);
                 $this->session->set_flashdata('messages', 'Images has been added successfully !!');
-                redirect('productimages/add/'.$id_product);
+                redirect('productimages/add/' . $id_product);
             }
         }
 
@@ -72,5 +72,20 @@ class Productimages extends CI_Controller
             'isi' => 'productimages/v_add'
         );
         $this->load->view('layout/backend/v_wrapper_backend', $data, FALSE);
+    }
+
+    //Delete one item
+    public function delete($id_product, $id_images)
+    {
+        //delete images
+        $productimages = $this->m_productimages->get_data($id_images);
+        if ($productimages->product_images != "") {
+            unlink('./assets/img/productimages/' . $productimages->product_images);
+        }
+
+        $data = array('id_images' => $id_images);
+        $this->m_productimages->delete($data);
+        $this->session->set_flashdata('messages', 'Images has been deleted successfully !!');
+        redirect('productimages/add/'.$id_product);
     }
 }
