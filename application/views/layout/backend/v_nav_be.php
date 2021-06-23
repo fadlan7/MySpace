@@ -36,7 +36,9 @@
                 <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="<?= base_url('admin') ?>" class="nav-link <?php if ($this->uri->segment(1) == 'admin') {
+                                                                                echo 'active';
+                                                                            } ?>" class="nav-link">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
                         <p>
                             Dashboard
@@ -55,15 +57,15 @@
                     <a href="<?= base_url('product') ?>" class="nav-link <?php if ($this->uri->segment(1) == 'product') {
                                                                                 echo 'active';
                                                                             } ?>" class="nav-link">
-                        <i class="nav-icon fas fa-list"></i>
+                        <i class="nav-icon fas fa-cubes"></i>
                         <p>Product</p>
                     </a>
                 </li>
 
                 <li class="nav-item">
                     <a href="<?= base_url('productimages') ?>" class="nav-link <?php if ($this->uri->segment(1) == 'productimages') {
-                                                                                echo 'active';
-                                                                            } ?>" class="nav-link">
+                                                                                    echo 'active';
+                                                                                } ?>" class="nav-link">
                         <i class="nav-icon fas fa-image"></i>
                         <p>Product Images</p>
                     </a>
