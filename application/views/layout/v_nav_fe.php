@@ -2,8 +2,8 @@
     <nav class="navbar navbar-expand-lg fixed-top py-3">
         <div class="container">
             <!-- <a href="#" class="navbar-brand text-uppercase font-weight-bold">Transparent Nav</a> -->
-            <a class="navbar-brand" href="#">
-                <img class="img-myspace" src="assets/img/slider/slider1.jpg" alt="">
+            <a class="navbar-brand" href="<?= base_url() ?>">
+                <img class="img-myspace" src="<?= base_url() ?>assets/img/slider/slider1.jpg" alt="">
             </a>
             <button type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler navbar-toggler-right"><i class="fa fa-bars"></i></button>
 
@@ -36,8 +36,18 @@
                 <!-- Right navbar links -->
                 <ul class="navbar-nav ml-auto">
                     <!-- Messages Dropdown Menu -->
-                    <li class="nav-item active"><a href="#" class="nav-link text-uppercase font-weight-bold text-black">Home <span class="sr-only">(current)</span></a></li>
+                    <li class="nav-item active"><a href="<?=base_url() ?>"class="nav-link text-uppercase font-weight-bold text-black">Home <span class="sr-only">(current)</span></a></li>
                     <li class="nav-item"><a href="#" class="nav-link text-uppercase font-weight-bold">About</a></li>
+
+                    <?php $category = $this->m_home->get_all_data_category() ?>
+                    <li class="nav-item dropdown">
+                        <a id="dropdownSubMenu1" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle">Dropdown</a>
+                        <ul aria-labelledby="dropdownSubMenu1" class="dropdown-menu border-0 shadow">
+                            <?php foreach ($category as $key => $value) { ?>
+                                <li><a href="<?= base_url('home/category/' . $value->id_category) ?>" class="dropdown-item"><?= $value->category_name ?> </a></li>
+                            <?php } ?>
+                        </ul>
+                    </li>
 
                     <li class="nav-item dropdown">
                         <a class="nav-link" data-toggle="dropdown" href="#">

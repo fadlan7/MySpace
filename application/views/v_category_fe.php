@@ -1,41 +1,4 @@
-<div class=" grid-container">
-    <div class="grid-item">
-        <h1 class="display-4">Hello, world!</h1>
-        <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
-        <hr class="my-4">
-        <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
-        <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
-    </div>
-
-    <div class="grid-item">22121</div>
-</div>
-
-<!-- Content Wrapper. Contains page content -->
-<!-- <div class="content-wrapper bg-grey">
-    <div class="content">
-        <div class="container pb-4 pt-4">
-            <h3 class="text-bold">
-                Browse The Room
-                <br>
-                That We Designed For You
-            </h3>
-
-            <div class="row">
-                <div class="col-sm border">
-                    One of three columns
-                </div>
-                <div class="col-sm border">
-                    One of three columns
-                </div>
-                <div class="col-sm border">
-                    One of three columns
-                </div>
-            </div>
-        </div>
-    </div>
-</div> -->
-
-<div class="content-wrapper">
+<div class="content-wrapper" style="padding-top: 100px;">
     <!-- Content Header (Page header) -->
     <div class="content-header">
         <div class="container">
@@ -86,7 +49,7 @@
                                                 Rp. <?= number_format($value->price, 0) ?>
                                             </div>
                                             <div class="col-sm-6 text-right">
-                                                <a href="<?= base_url('home/product_details/' . $value->id_product) ?>" class="btn btn-sm bg-teal">
+                                                <a href="#" class="btn btn-sm bg-teal">
                                                     <i class="fas fa-eye"></i>
                                                 </a>
                                                 <a href="#" class="btn btn-sm btn-primary">
@@ -105,15 +68,8 @@
     </div>
 </div>
 
-
 <script>
-    $(function() {
-        $(window).on('scroll', function() {
-            if ($(window).scrollTop() > 10) {
-                $('.navbar').addClass('active');
-            } else {
-                $('.navbar').removeClass('active');
-            }
-        });
-    });
+$(function() {
+    $('.navbar').addClass('active');
+});
 </script>
