@@ -47,4 +47,11 @@ class M_home extends CI_Model
         $this->db->where('id_product', $id_product);
         return $this->db->get()->row();
     }
+
+    public function product_images($id_product){
+        $this->db->select('*');
+        $this->db->from('tb_product_images');
+        $this->db->where('id_product', $id_product);
+        return $this->db->get()->result();
+    }
 }

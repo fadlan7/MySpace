@@ -34,6 +34,7 @@ class Home extends CI_Controller
     public function product_details($id_product){
         $data = array(
             'title' => 'Product Details',
+            'images' => $this->m_home->product_images($id_product),
             'product' => $this->m_home->product_details($id_product),
             'isi' => 'v_detail_fe'
         );
