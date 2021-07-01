@@ -22,6 +22,8 @@
     <!-- Bootstrap 4 -->
     <script src="<?= base_url() ?>templates/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="<?= base_url() ?>assets/js/script.js"></script>
+    <!-- SweetAlert2 -->
+    <link rel="stylesheet" href="<?= base_url() ?>templates/plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css">
     <!-- DataTables  & Plugins -->
     <script src="<?= base_url() ?>templates/plugins/datatables/jquery.dataTables.min.js"></script>
     <script src="<?= base_url() ?>templates/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>

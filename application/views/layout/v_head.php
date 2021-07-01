@@ -16,12 +16,14 @@
     <link rel="stylesheet" href="<?= base_url() ?>templates/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
     <!-- Theme style -->
     <link rel="stylesheet" href="<?= base_url() ?>templates/dist/css/adminlte.min.css">
-    <link rel="stylesheet" href="<?= base_url()?>assets/css/style.css">
+    <link rel="stylesheet" href="<?= base_url() ?>assets/css/style.css">
     <!-- jQuery -->
     <script src="<?= base_url() ?>templates/plugins/jquery/jquery.min.js"></script>
     <!-- Bootstrap 4 -->
     <script src="<?= base_url() ?>templates/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="<?= base_url() ?>assets/js/script.js"></script>
+    <!-- SweetAlert2 -->
+    <link rel="stylesheet" href="<?= base_url() ?>templates/plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css">
     <!-- DataTables  & Plugins -->
     <script src="<?= base_url() ?>templates/plugins/datatables/jquery.dataTables.min.js"></script>
     <script src="<?= base_url() ?>templates/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>

@@ -65,18 +65,27 @@
 
                         <?php foreach ($product as $key => $value) { ?>
 
-                            <div class="col-12 col-sm-6 col-md-4 d-flex align-items-stretch flex-column">
+                            <div class="col-12 col-sm-6 col-md-4">
+                                <?php 
+                                echo form_open('cart/add');
+                                echo form_hidden('id', $value->id_product);
+                                echo form_hidden('qty', 1);
+                                echo form_hidden('price', $value->price);
+                                echo form_hidden('name', $value->product_name);
+                                echo form_hidden('redirect_page'.str_replace('index.php/','',current_url()));
+                                ?>
+
                                 <div class="card bg-light d-flex flex-fill">
                                     <div class="card-header text-muted border-bottom-0">
                                         <h2 class="lead"><b><?= $value->product_name ?></b></h2>
                                     </div>
                                     <div class="card-body pt-0">
-                                        <div class="row">
+                                        <div class="col">
                                             <div class="col-7">
                                                 <p class="text-muted text-sm"><b>Category: </b> <?= $value->category_name ?> </p>
                                             </div>
                                             <div class="col-5 text-center">
-                                                <img src="<?= base_url('assets/img/product/' . $value->product_images) ?>" alt="" class="img-fluid" width="150px">
+                                                <img src="<?= base_url('assets/img/product/' . $value->product_images) ?>" height="250px">
                                             </div>
                                         </div>
                                     </div>
@@ -89,13 +98,14 @@
                                                 <a href="<?= base_url('home/product_details/' . $value->id_product) ?>" class="btn btn-sm bg-teal">
                                                     <i class="fas fa-eye"></i>
                                                 </a>
-                                                <a href="#" class="btn btn-sm btn-primary">
+                                                <button type="submit" class="btn btn-sm btn-primary swalDefaultSuccess">
                                                     <i class="fas fa-cart-plus"></i>
-                                                </a>
+                                                </button>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
+                                <?php echo form_close(); ?>
                             </div>
                         <?php } ?>
                     </div>
@@ -106,6 +116,8 @@
 </div>
 
 
+<!-- SweetAlert2 -->
+<script src="<?= base_url() ?>templates/plugins/sweetalert2/sweetalert2.min.js"></script>
 <script>
     $(function() {
         $(window).on('scroll', function() {
@@ -114,6 +126,21 @@
             } else {
                 $('.navbar').removeClass('active');
             }
+        });
+
+
+        var Toast = Swal.mixin({
+            toast: true,
+            position: 'bottom-end',
+            showConfirmButton: false,
+            timer: 3000
+        });
+
+        $('.swalDefaultSuccess').click(function() {
+            Toast.fire({
+                icon: 'success',
+                title: 'Product successfully added to cart!!'
+            })
         });
     });
 </script>
