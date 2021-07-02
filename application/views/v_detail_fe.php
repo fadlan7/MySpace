@@ -163,7 +163,6 @@
         $('.navbar').addClass('active');
     });
 
-
     $(document).ready(function() {
         $('.product-image-thumb').on('click', function() {
             var $image_element = $(this).find('img')
@@ -174,15 +173,6 @@
     })
 
     $(function() {
-        $(window).on('scroll', function() {
-            if ($(window).scrollTop() > 10) {
-                $('.navbar').addClass('active');
-            } else {
-                $('.navbar').removeClass('active');
-            }
-        });
-
-
         var Toast = Swal.mixin({
             toast: true,
             position: 'bottom-end',

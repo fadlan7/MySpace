@@ -64,40 +64,49 @@
                             <span class="badge badge-danger navbar-badge"><?= $total_product ?></span>
                         </a>
                         <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                            <!-- Product Start -->
-                            <?php foreach ($cart as $key => $value) {
-                                $product = $this->m_home->product_details($value['id']);
-                            ?>
+
+                            <?php if (empty($cart)) { ?>
+                                <a href="#" class="dropdown-item">
+                                    <p>Your Shopping Cart Is Empty</p>
+                                </a>
+
+                                <?php } else {
+                                foreach ($cart as $key => $value) {
+                                    $product = $this->m_home->product_details($value['id']);
+                                ?>
+                                    <!-- Product Start -->
+                                    <a href="#" class="dropdown-item">
+                                        <div class="media">
+                                            <img src="<?= base_url('assets/img/product/' . $product->product_images) ?>" alt="User Avatar" class="img-size-50 mr-3">
+                                            <div class="media-body">
+                                                <h3 class="dropdown-item-title">
+                                                    <?= $value['name'] ?>
+                                                </h3>
+                                                <p class="text-sm"><?= $value['qty'] ?> x Rp.<?= number_format($value['price'], 0) ?></p>
+                                                <p class="text-sm text-muted"><i class="fa fa-calculator"></i> Rp.<?= $this->cart->format_number($value['subtotal']); ?></p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <div class="dropdown-divider"></div>
+                                <?php } ?>
+                                <!-- Product End -->
                                 <a href="#" class="dropdown-item">
                                     <div class="media">
-                                        <img src="<?= base_url('assets/img/product/' . $product->product_images) ?>" alt="User Avatar" class="img-size-50 mr-3">
                                         <div class="media-body">
-                                            <h3 class="dropdown-item-title">
-                                                <?= $value['name'] ?>
-                                            </h3>
-                                            <p class="text-sm"><?= $value['qty'] ?> x Rp.<?= number_format($value['price'], 0) ?></p>
-                                            <p class="text-sm text-muted"><i class="fa fa-calculator"></i> Rp.<?= $this->cart->format_number($value['subtotal']); ?></p>
+                                            <tr>
+                                                <td colspan="2"> </td>
+                                                <td class="right"><strong>Total:</strong></td>
+                                                <td class="right">Rp.<?= $this->cart->format_number($this->cart->total()); ?></td>
+                                            </tr>
                                         </div>
                                     </div>
                                 </a>
-                                <div class="dropdown-divider"></div>
-                            <?php } ?>
-                            <!-- Product End -->
-                            <a href="#" class="dropdown-item">
-                                <div class="media">
-                                    <div class="media-body">
-                                        <tr>
-                                            <td colspan="2"> </td>
-                                            <td class="right"><strong>Total:</strong></td>
-                                            <td class="right">Rp.<?= $this->cart->format_number($this->cart->total()); ?></td>
-                                        </tr>
-                                    </div>
-                                </div>
-                            </a>
 
-                            <div class="dropdown-divider"></div>
-                            <a href="#" class="dropdown-item dropdown-footer">View Cart</a>
-                            <a href="#" class="dropdown-item dropdown-footer">Checkout</a>
+                                <div class="dropdown-divider"></div>
+                                <a href="<?= base_url('cart') ?>" class="dropdown-item dropdown-footer">View Cart</a>
+                                <a href="#" class="dropdown-item dropdown-footer">Checkout</a>
+                            <?php } ?>
+
                         </div>
                     </li>
                     <li class="nav-item">
