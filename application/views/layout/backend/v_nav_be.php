@@ -37,8 +37,8 @@
                with font-awesome or any other icon font library -->
                 <li class="nav-item">
                     <a href="<?= base_url('admin') ?>" class="nav-link <?php if ($this->uri->segment(1) == 'admin') {
-                                                                                echo 'active';
-                                                                            } ?>" class="nav-link">
+                                                                            echo 'active';
+                                                                        } ?>" class="nav-link">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
                         <p>
                             Dashboard
@@ -95,8 +95,10 @@
                     </ul>
                 </li>
                 <li class="nav-item">
-                    <a href="<?= base_url('admin/rajaongkir') ?>" class="nav-link">
-                        <i class="nav-icon fa fa-gear"></i>
+                    <a href="<?= base_url('admin/setting') ?>" class="nav-link <?php if ($this->uri->segment(2) == 'setting') {
+                                                                                        echo 'active';
+                                                                                    } ?>">
+                        <i class="nav-icon fa fa-cog"></i>
                         <p>Raja Ongkir</p>
                     </a>
                 </li>
