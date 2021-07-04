@@ -33,13 +33,20 @@
                                         <th>Product Name</th>
                                         <th width="100px">QTY</th>
                                         <th style="text-align:right">Item Price</th>
+                                        <th style="text-align:right">Product Weight</th>
                                         <th style="text-align:right">Sub-Total</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
                                 <?php $i = 1; ?>
 
-                                <?php foreach ($this->cart->contents() as $items) : ?>
+                                <?php
+                                $t_weight = 0;
+                                foreach ($this->cart->contents() as $items) {
+                                    $product = $this->m_home->product_details($items['id']);
+                                    $weight = $items['qty'] * $product->product_weight;
+                                    $t_weight = $t_weight + $weight;
+                                ?>
                                     <tbody>
                                         <tr>
                                             <td><?php echo $items['name']; ?></td>
@@ -53,6 +60,7 @@
                                                     'class' => 'form-control',
                                                 )); ?></td>
                                             <td style="text-align:right">Rp.<?php echo $this->cart->format_number($items['price']); ?></td>
+                                            <td style="text-align:right"><?= $weight ?> gr</td>
                                             <td style="text-align:right">Rp.<?php echo $this->cart->format_number($items['subtotal']); ?></td>
                                             <td class="text-center">
                                                 <a href="<?= base_url('cart/delete/' . $items['rowid']) ?>" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>
@@ -61,12 +69,13 @@
 
                                         <?php $i++; ?>
 
-                                    <?php endforeach; ?>
+                                    <?php } ?>
 
                                     <tr>
                                         <td colspan="2"> </td>
                                         <td class="right"><strong>Total</strong></td>
-                                        <td class="right"><strong>Rp.<?php echo $this->cart->format_number($this->cart->total()); ?></strong> </td>
+                                        <td class="text-right"><strong><?php echo $t_weight ?> gr</strong> </td>
+                                        <td class="text-right"><strong>Rp.<?php echo $this->cart->format_number($this->cart->total()); ?></strong> </td>
                                     </tr>
                                     </tbody>
                             </table>

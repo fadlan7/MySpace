@@ -31,25 +31,6 @@ class Product extends CI_Controller
             'required',
             array('required' => '%s Must be filled')
         );
-        $this->form_validation->set_rules(
-            'id_category',
-            'Category',
-            'required',
-            array('required' => '%s Must be filled')
-        );
-        $this->form_validation->set_rules(
-            'price',
-            'Price',
-            'required',
-            array('required' => '%s Must be filled')
-        );
-        $this->form_validation->set_rules(
-            'description',
-            'Description',
-            'required',
-            array('required' => '%s Must be filled')
-        );
-
 
         if ($this->form_validation->run() == TRUE) {
             $config['upload_path'] = './assets/img/product/';
@@ -77,6 +58,7 @@ class Product extends CI_Controller
                     'price' => $this->input->post('price'),
                     'description' => $this->input->post('description'),
                     'product_images' => $upload_data['uploads']['file_name'],
+                    'product_weight' => $this->input->post('product_weight')
                 );
                 $this->m_product->add($data);
                 $this->session->set_flashdata('messages', 'Product has been added successfully !!');
@@ -101,24 +83,24 @@ class Product extends CI_Controller
             'required',
             array('required' => '%s Must be filled')
         );
-        $this->form_validation->set_rules(
-            'id_category',
-            'Category',
-            'required',
-            array('required' => '%s Must be filled')
-        );
-        $this->form_validation->set_rules(
-            'price',
-            'Price',
-            'required',
-            array('required' => '%s Must be filled')
-        );
-        $this->form_validation->set_rules(
-            'description',
-            'Description',
-            'required',
-            array('required' => '%s Must be filled')
-        );
+        // $this->form_validation->set_rules(
+        //     'id_category',
+        //     'Category',
+        //     'required',
+        //     array('required' => '%s Must be filled')
+        // );
+        // $this->form_validation->set_rules(
+        //     'price',
+        //     'Price',
+        //     'required',
+        //     array('required' => '%s Must be filled')
+        // );
+        // $this->form_validation->set_rules(
+        //     'description',
+        //     'Description',
+        //     'required',
+        //     array('required' => '%s Must be filled')
+        // );
 
 
         if ($this->form_validation->run() == TRUE) {
@@ -155,6 +137,7 @@ class Product extends CI_Controller
                     'price' => $this->input->post('price'),
                     'description' => $this->input->post('description'),
                     'product_images' => $upload_data['uploads']['file_name'],
+                    'product_weight' => $this->input->post('product_weight')
                 );
                 $this->m_product->update($data);
                 $this->session->set_flashdata('messages', 'Product has been updated successfully !!');
@@ -167,6 +150,7 @@ class Product extends CI_Controller
                 'id_category' => $this->input->post('id_category'),
                 'price' => $this->input->post('price'),
                 'description' => $this->input->post('description'),
+                'product_weight' => $this->input->post('product_weight')
             );
             $this->m_product->update($data);
             $this->session->set_flashdata('messages', 'Product has been updated successfully !!');

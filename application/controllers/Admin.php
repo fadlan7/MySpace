@@ -21,4 +21,13 @@ class Admin extends CI_Controller
         );
         $this->load->view('layout/backend/v_wrapper_backend', $data, FALSE);
     }
+    
+    public function rajaongkir()
+    {
+        $data = array(
+            'title' => 'setting',
+            'isi' => 'v_rajaongkir'
+        );
+        $this->load->view('layout/backend/v_wrapper_backend', $data, FALSE);
+    }
 }

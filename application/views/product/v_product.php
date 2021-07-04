@@ -36,7 +36,11 @@
                     foreach ($product as $key => $value) { ?>
                         <tr>
                             <td class="text-center"><?= $no++ ?></td>
-                            <td><?= $value->product_name ?></td>
+                            <td>
+                                <b><?= $value->product_name ?></b>
+                                <br>
+                                Product Weight: <?= $value->product_weight ?> gr
+                            </td>
                             <td><?= $value->category_name ?></td>
                             <td>Rp. <?= number_format($value->price, 00) ?></td>
                             <td class="text-center"><img src="<?= base_url('assets/img/product/' . $value->product_images) ?>" alt="" srcset="" width="150px"></td>

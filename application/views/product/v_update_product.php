@@ -8,14 +8,21 @@
                 <input type="text" name="product_name" class="form-control" placeholder="Product Name" value="<?= $product->product_name ?>" required>
             </div>
             <div class="row">
-                <div class="col-md-6">
+                <div class="col-md-4">
                     <div class="form-group">
                         <label>Product Price</label>
                         <input name="price" class="form-control" placeholder="Product Price" value="<?= $product->price ?>" required>
                     </div>
                 </div>
 
-                <div class="col-md-6">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label>Product Weight (gr)</label>
+                        <input type="number" min="0" name="product_weight" class="form-control" placeholder="Product Weight" value="<?= set_value('product_weight') ?>" required>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
                     <div class="form-group">
                         <label>Category</label>
                         <select name="id_category" class="form-control" required>
