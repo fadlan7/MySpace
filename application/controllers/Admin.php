@@ -49,20 +49,5 @@ class Admin extends CI_Controller
             $this->session->set_flashdata('messages', 'Settings has been updated successfully !!');
             redirect('admin/setting');
         }
-
-        // $data = array(
-        //     'title' => 'setting',
-        //     'setting' => $this->m_admin->data_setting(),
-        //     'isi' => 'v_setting',
-        //     'id' => 1,
-        //     'location' => $this->input->post('city'),
-        //     'store_name' => $this->input->post('store_name'),
-        //     'address' => $this->input->post('address'),
-        //     'tel' => $this->input->post('tel'),
-        // );
-        // $this->load->view('layout/backend/v_wrapper_backend', $data, FALSE);
-        // $this->m_admin->edit($data);
-        // $this->session->set_flashdata('messages', 'Settings has been updated successfully !!');
-        // redirect('admin/setting');
     }
 }

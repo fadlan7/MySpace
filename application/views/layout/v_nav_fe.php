@@ -110,30 +110,29 @@
                         </div>
                     </li>
                     <li class="nav-item">
-                        <a href="#" class="nav-link" data-toggle="dropdown">
-                            <img style="width: 40px;" src="<?= base_url() ?>templates/dist/img/user1-128x128.jpg" alt="AdminLTE Logo" class="brand-image img-circle elevation-1" style="opacity: .8">
-                            <span class="brand-text font-weight-light">Pelanggan</span>
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                            <span class="dropdown-header">15 Notifications</span>
-                            <div class="dropdown-divider"></div>
-                            <a href="#" class="dropdown-item">
-                                <i class="fas fa-envelope mr-2"></i> 4 new messages
-                                <span class="float-right text-muted text-sm">3 mins</span>
+                        <?php
+                        if ($this->session->userdata('email') == "") { ?>
+                            <a href="<?= base_url('customer/login') ?>" class="nav-link">
+                                <img style="width: 40px;" src="<?= base_url() ?>templates/dist/img/user1-128x128.jpg" alt="AdminLTE Logo" class="brand-image img-circle elevation-1" style="opacity: .8">
+                                <span class="brand-text font-weight-light">Login/register</span>
                             </a>
-                            <div class="dropdown-divider"></div>
-                            <a href="#" class="dropdown-item">
-                                <i class="fas fa-users mr-2"></i> 8 friend requests
-                                <span class="float-right text-muted text-sm">12 hours</span>
+                        <?php } else { ?>
+                            <a href="#" class="nav-link" data-toggle="dropdown">
+                                <img style="width: 40px;" src="<?= base_url() ?>templates/dist/img/user1-128x128.jpg" alt="AdminLTE Logo" class="brand-image img-circle elevation-1" style="opacity: .8">
+                                <span class="brand-text font-weight-light">Nama Pelanggan</span>
                             </a>
-                            <div class="dropdown-divider"></div>
-                            <a href="#" class="dropdown-item">
-                                <i class="fas fa-file mr-2"></i> 3 new reports
-                                <span class="float-right text-muted text-sm">2 days</span>
-                            </a>
-                            <div class="dropdown-divider"></div>
-                            <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
-                        </div>
+
+                            <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+                                <span class="dropdown-header">15 Notifications</span>
+                                <div class="dropdown-divider"></div>
+                                <a href="#" class="dropdown-item">
+                                    <i class="fas fa-envelope mr-2"></i> 4 new messages
+                                    <span class="float-right text-muted text-sm">3 mins</span>
+                                </a>
+                                <div class="dropdown-divider"></div>
+                                <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
+                            </div>
+                        <?php } ?> 
                     </li>
                 </ul>
                 <!-- 
@@ -141,12 +140,12 @@
                     <i class="fas fa-shopping-cart"></i>
                 </button> -->
 
-                <div class="mr-3 line" style="font-size: 26px;color: #cdcdcd;margin-bottom: 8px;font-weight: 100;">|</div>
+                <!-- <div class="mr-3 line" style="font-size: 26px;color: #cdcdcd;margin-bottom: 8px;font-weight: 100;">|</div>
 
                 <div class="d-flex">
                     <button class="btn font-weight-bold mr-3 text-white" style=" border-radius: 8px;font-size: 13px;background-color: #03ac0e;">Masuk</button>
                     <button class="btn font-weight-bold" style=" background-color: #fff;border: 1px solid #03ac0e;color: #03ac0e;">Daftar </button>
-                </div>
+                </div> -->
             </div>
         </div>
     </nav>
