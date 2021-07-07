@@ -39,7 +39,16 @@
                     echo $this->session->flashdata('not_login_messages');
                     echo '</div>';
                 }
-                
+
+
+                if ($this->session->flashdata('incorrect_messages')) {
+                    echo '<div class="alert alert-warning alert-dismissible">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                    <h5><i class="icon fas fa-ban"></i> Alert!</h5>';
+                    echo $this->session->flashdata('incorrect_messages');
+                    echo '</div>';
+                }
+
                 if ($this->session->flashdata('logout_messages')) {
                     echo '<div class="alert alert-success alert-dismissible">
                     <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
@@ -113,5 +122,12 @@
     <!-- AdminLTE App -->
     <script src="<?= base_url() ?>templates/dist/js/adminlte.min.js"></script>
 </body>
+<script>
+    window.setTimeout(function() {
+        $(".alert").fadeTo(500, 0).slideUp(500, function() {
+            $(this).remove();
+        });
+    }, 3000)
+</script>
 
 </html>

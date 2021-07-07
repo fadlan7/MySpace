@@ -118,19 +118,23 @@
                             </a>
                         <?php } else { ?>
                             <a href="#" class="nav-link" data-toggle="dropdown">
-                                <img style="width: 40px;" src="<?= base_url() ?>templates/dist/img/user1-128x128.jpg" alt="AdminLTE Logo" class="brand-image img-circle elevation-1" style="opacity: .8">
-                                <span class="brand-text font-weight-light">Nama Pelanggan</span>
+                                <img style="width: 40px;" src="<?= base_url('assets/img/customer/'.$this->session->userdata('photo')) ?>" alt="AdminLTE Logo" class="brand-image img-circle elevation-1" style="opacity: .8">
+                                <span class="brand-text font-weight-light"><?= $this->session->userdata('full_name') ?></span>
                             </a>
 
                             <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
                                 <span class="dropdown-header">15 Notifications</span>
                                 <div class="dropdown-divider"></div>
+                                <a href="<?= base_url('customer/account') ?>" class="dropdown-item">
+                                    <i class="fas fa-user mr-2"></i>My Account
+                                </a>
+
+                                <div class="dropdown-divider"></div>
                                 <a href="#" class="dropdown-item">
-                                    <i class="fas fa-envelope mr-2"></i> 4 new messages
-                                    <span class="float-right text-muted text-sm">3 mins</span>
+                                    <i class="fas fa-shopping-cart mr-2"></i>My Order
                                 </a>
                                 <div class="dropdown-divider"></div>
-                                <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
+                                <a href="<?= base_url('customer/logout') ?>" class="dropdown-item dropdown-footer">Sign Out</a>
                             </div>
                         <?php } ?> 
                     </li>

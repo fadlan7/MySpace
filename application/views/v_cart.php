@@ -84,7 +84,7 @@
                                 <div class="col-sm-4">
                                     <button type="submit" class="btn btn-primary">Update your Cart</button>
                                     <a href="<?= base_url('cart/clear') ?>" class="btn btn-danger">Clear Cart</a>
-                                    <a href="" class="btn btn-success">Checkout</a>
+                                    <a href="<?= base_url('cart/checkout') ?>" class="btn btn-success">Checkout</a>
                                 </div>
                             </div>
                             <?php echo form_close() ?>

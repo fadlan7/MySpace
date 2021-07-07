@@ -9,8 +9,7 @@
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="#">MySpace</a></li>
-                        <!-- <li class="breadcrumb-item"><a href="#"><?= $product->category_name ?></a></li>
-                        <li class="breadcrumb-item text-bold active" aria-current="page"><?= $product->product_name ?></li> -->
+                        <li class="breadcrumb-item"><a href="#"><?= $title ?></a></li>
                     </ol>
                 </div><!-- /.col -->
             </div><!-- /.row -->
@@ -27,30 +26,30 @@
                         <a href="<?= base_url() ?>" class="h1"><b>My</b>Space</a>
                     </div>
                     <div class="card-body">
-                        <p class="login-box-msg">Register a new membership</p>
+                        <p class="login-box-msg">Sign in to start your session</p>
 
                         <?php
                         echo validation_errors('<div class="alert alert-warning alert-dismissible">
                         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
                         <h5><i class="icon fas fa-exclamation-triangle"></i> Alert!</h5>', '</div>');
 
-                        if ($this->session->flashdata('regist')) {
+                        if ($this->session->flashdata('messages')) {
                             echo '<div class="alert alert-success alert-dismissible">
                             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
                             <h5><i class="icon fas fa-check"></i> Success!</h5>';
-                            echo $this->session->flashdata('regist');
+                            echo $this->session->flashdata('messages');
                             echo '</div>';
                         }
 
-                        echo form_open('customer/register'); ?>
-                        <div class="input-group mb-3">
-                            <input type="text" name="full_name" value="<?= set_value('full_name') ?>" class="form-control" placeholder="Full name">
-                            <div class="input-group-append">
-                                <div class="input-group-text">
-                                    <span class="fas fa-user"></span>
-                                </div>
-                            </div>
-                        </div>
+                        if ($this->session->flashdata('error')) {
+                            echo '<div class="alert alert-warning alert-dismissible">
+                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                            <h5><i class="icon fas fa-ban"></i> Alert!</h5>';
+                            echo $this->session->flashdata('error');
+                            echo '</div>';
+                        }
+
+                        echo form_open('customer/login'); ?>
                         <div class="input-group mb-3">
                             <input type="email" class="form-control" name="email" value="<?= set_value('email') ?>" placeholder="Email">
                             <div class="input-group-append">
@@ -67,26 +66,18 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="input-group mb-3">
-                            <input type="password" name="retype_password" value="<?= set_value('retype_password') ?>" class="form-control" placeholder="Retype password">
-                            <div class="input-group-append">
-                                <div class="input-group-text">
-                                    <span class="fas fa-lock"></span>
-                                </div>
-                            </div>
-                        </div>
                         <div class="row">
                             <div class="col-8">
-                                <div class="icheck-primary">
+                                <!-- <div class="icheck-primary">
                                     <input type="checkbox" id="agreeTerms" name="terms" value="agree">
                                     <label for="agreeTerms">
                                         I agree to the <a href="#">terms</a>
                                     </label>
-                                </div>
+                                </div> -->
                             </div>
                             <!-- /.col -->
                             <div class="col-4">
-                                <button type="submit" class="btn btn-primary btn-block">Register</button>
+                                <button type="submit" class="btn btn-primary btn-block">Sign In</button>
                             </div>
                             <!-- /.col -->
                         </div>
@@ -103,7 +94,7 @@
                             </a>
                         </div>
 
-                        <a href="<?= base_url('customer/login') ?>" class="text-center">I already have a membership</a>
+                        <a href="<?= base_url('customer/register') ?>" class="text-center">Register a new membership</a>
                     </div>
                     <!-- /.form-box -->
                 </div><!-- /.card -->
