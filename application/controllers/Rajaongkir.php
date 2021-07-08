@@ -147,7 +147,7 @@ class Rajaongkir extends CI_Controller
             $delivery = $array_response['rajaongkir']['results'][0]['costs'];
             echo '<option value="">-Choose Delivery Type-</option>';
             foreach ($delivery as $key => $value) {
-                echo "<option value='" . $value['service'] . "' shipping='" . $value['cost'][0]['value'] . "'>";
+                echo "<option value='" . $value['service'] . "' shipping='" . $value['cost'][0]['value'] . "'estimation='" . $value['cost'][0]['etd']  . " Hari'>";
                 echo $value['service'] . " | Rp." . $value['cost'][0]['value'] . " | " . $value['cost'][0]['etd'] . " Hari";
                 echo "</option>";
             }

@@ -30,7 +30,7 @@
                                 <h4>
                                     <!-- <i class="fas fa-globe"></i> <b>My</b>Space -->
                                     <img src="<?= base_url() ?>assets/img/icon/myspace.png" alt="">
-                                    <small class="float-right">Date: 2/10/2014</small>
+                                    <small class="float-right">Date: <?= date('d-m-y') ?></small>
                                 </h4>
                             </div>
                             <!-- /.col -->
@@ -97,6 +97,11 @@
                         </div>
                         <!-- /.row -->
 
+                        <?php
+                        echo form_open('cart/checkout_process');
+                        $no_order = date('Ymd') . strtoupper(random_string('alnum', 8));
+
+                        ?>
                         <div class="row">
                             <!-- accepted payments column -->
                             <div class="col-7 invoice-col">
@@ -140,10 +145,29 @@
                                         </div>
                                     </div>
 
-                                    <div class="col-md-12">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>Recipient's Name</label>
+                                            <input type="text" name="recipient_name" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>Recipient's Phone Number</label>
+                                            <input type="text" name="tel" class="form-control">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-8">
                                         <div class="form-group">
                                             <label>Address</label>
                                             <textarea name="address" class="form-control" cols="30" rows="5"></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label>Postal Code</label>
+                                            <input type="text" name="postal_code" class="form-control">
                                         </div>
                                     </div>
                                 </div>
@@ -177,15 +201,25 @@
                         </div>
                         <!-- /.row -->
 
+                        <!-- Transaction -->
+                        <input name="no_order" value="<?= $no_order ?>">
+                        <input name="estimation" >
+                        <input name="shipping" >
+                        <input name="weight" value="<?= $t_weight  ?>">
+                        <input name="subtotal" value="<?= $this->cart->total() ?>">
+                        <input name="total">
+                        <!-- End Transaction -->
+
                         <div class="row no-print">
                             <div class="col-12">
                                 <a href="<?= base_url('cart') ?>" rel="noopener" class="btn btn-default">Back to Cart</a>
 
-                                <button type="button" class="btn btn-success float-right" style="margin-right: 5px;">
+                                <button type="submit" class="btn btn-success float-right" style="margin-right: 5px;">
                                     Checkout Now
                                 </button>
                             </div>
                         </div>
+                        <?php echo form_close() ?>
                     </div>
                     <!-- /.invoice -->
 
@@ -275,8 +309,13 @@
             let reverse1 = pay.toString().split('').reverse().join(''),
                 ribuan_ttl = reverse1.match(/\d{1,3}/g);
             ribuan_ttl = ribuan_ttl.join(',').split('').reverse().join('');
-            
+
             $('#pay').html("Rp. " + ribuan_ttl);
+
+
+            //estimation and shipping
+            let estimation = $('option:selected', this).attr('estimation');
+            $('input[name=estimation]').val(estimation);
         });
     });
 </script>
