@@ -117,7 +117,7 @@
                                     Phone: (555) 539-1037<br>
                                     Email: john.doe@example.com -->
                                 </address>
-                                <div class="row">
+                                <div class="row pb-4">
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>Province</label>
@@ -206,13 +206,22 @@
                         <!-- /.row -->
 
                         <!-- Transaction -->
-                        <input name="no_order" value="<?= $no_order ?>">
-                        <input name="estimation">
-                        <input name="shipping">
-                        <input name="weight" value="<?= $t_weight  ?>">
-                        <input name="subtotal" value="<?= $this->cart->total() ?>">
-                        <input name="total">
+                        <input name="no_order" value="<?= $no_order ?>" hidden>
+                        <input name="estimation" hidden>
+                        <input name="shipping" hidden>
+                        <input name="weight" value="<?= $t_weight  ?>" hidden>
+                        <input name="subtotal" value="<?= $this->cart->total() ?>" hidden>
+                        <input name="total" hidden>
                         <!-- End Transaction -->
+
+                        <!-- Detail Transaction -->
+                        <?php
+                        $i = 1;
+                        foreach ($this->cart->contents() as $items) {
+                            echo form_hidden('qty' . $i++, $items['qty']);
+                        }
+                        ?>
+                        <!-- End Detail Transaction -->
 
                         <div class="row no-print">
                             <div class="col-12">
@@ -245,7 +254,7 @@
             type: "POST",
             url: "<?= base_url('rajaongkir/province') ?>",
             success: function(province_result) {
-                // console.log(province_result);
+                console.log(province_result);
                 $("select[name=province]").html(province_result);
             }
         });
@@ -259,7 +268,7 @@
                 url: "<?= base_url('rajaongkir/city') ?>",
                 data: "id_province=" + id_province,
                 success: function(city_result) {
-                    // console.log(city_result)
+                    console.log(city_result)
                     $("select[name=city]").html(city_result);
                 }
             });
@@ -270,7 +279,7 @@
                 type: "POST",
                 url: "<?= base_url('rajaongkir/courier') ?>",
                 success: function(courier_result) {
-                    // console.log(courier_result)
+                    console.log(courier_result)
                     $("select[name=courier]").html(courier_result);
                 }
             });
@@ -291,7 +300,7 @@
                 url: "<?= base_url('rajaongkir/delivery') ?>",
                 data: 'courier=' + get_courier + '&id_city=' + city_destination + '&weight=' + t_weight,
                 success: function(delivery_result) {
-                    // console.log(delivery_result);
+                    console.log(delivery_result);
                     $("select[name=delivery]").html(delivery_result);
                 }
             });

@@ -104,7 +104,7 @@
 
                                 <div class="dropdown-divider"></div>
                                 <a href="<?= base_url('cart') ?>" class="dropdown-item dropdown-footer">View Cart</a>
-                                <a href="#" class="dropdown-item dropdown-footer">Checkout</a>
+                                <a href="<?= base_url('cart/checkout') ?>" class="dropdown-item dropdown-footer">Checkout</a>
                             <?php } ?>
 
                         </div>
@@ -130,8 +130,8 @@
                                 </a>
 
                                 <div class="dropdown-divider"></div>
-                                <a href="#" class="dropdown-item">
-                                    <i class="fas fa-shopping-cart mr-2"></i>My Order
+                                <a href="<?= base_url('my_order') ?>" class="dropdown-item">
+                                    <i class="fas fa-shopping-cart mr-2"></i>My Orders
                                 </a>
                                 <div class="dropdown-divider"></div>
                                 <a href="<?= base_url('customer/logout') ?>" class="dropdown-item dropdown-footer">Sign Out</a>

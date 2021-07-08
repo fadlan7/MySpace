@@ -9,8 +9,7 @@
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="#">MySpace</a></li>
-                        <!-- <li class="breadcrumb-item"><a href="#"><?= $product->category_name ?></a></li>
-                        <li class="breadcrumb-item text-bold active" aria-current="page"><?= $product->product_name ?></li> -->
+                        <li class="breadcrumb-item"><a href="#"><?= $title ?></a></li>
                     </ol>
                 </div><!-- /.col -->
             </div><!-- /.row -->
@@ -24,6 +23,17 @@
             <div class="card card-solid">
                 <div class="card-body pb-5">
                     <div class="row">
+                        <div class="col-sm-6">
+                            <?php
+                            if ($this->session->flashdata('messages')) {
+                                echo '<div class="alert alert-success alert-dismissible">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                    <h5><i class="icon fas fa-check"></i> Success !</h5>';
+                                echo $this->session->flashdata('messages');
+                                echo '</div>';
+                            }
+                            ?>
+                        </div>
                         <div class="col-sm-12">
                             <?php echo form_open('cart/update'); ?>
 

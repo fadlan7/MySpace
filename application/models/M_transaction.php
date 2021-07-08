@@ -11,8 +11,8 @@ class M_transaction extends CI_Model
         $this->db->insert('tb_transaction', $data);
     }
 
-    public function save_transaction_details($data)
+    public function save_transaction_details($details)
     {
-        $this->db->insert('tb_transaction_details', $data);
+        $this->db->insert('tb_transaction_details', $details);
     }
 }

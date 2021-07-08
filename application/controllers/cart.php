@@ -56,6 +56,7 @@ class Cart extends CI_Controller
             $this->cart->update($data);
             $i++;
         }
+        $this->session->set_flashdata('messages', 'Cart successfully Updated!!');
         redirect('cart');
     }
 
@@ -107,9 +108,10 @@ class Cart extends CI_Controller
             );
             $this->load->view('layout/v_wrapper_frontend', $data, FALSE);
         } else {
+            //post data to tb_transaction
             $data = array(
                 'no_order' => $this->input->post('no_order'),
-                'date_order' => $this->input->post('date_order'),
+                'date_order' => date('Y-m-d'),
                 'recipient_name' => $this->input->post('recipient_name'),
                 'tel' => $this->input->post('tel'),
                 'province' => $this->input->post('province'),
@@ -126,7 +128,21 @@ class Cart extends CI_Controller
                 'order_status' => '0',
             );
             $this->m_transaction->save_transaction($data);
-            $this->session->set_flashdata('message', 'Order successfully processed!!');
+
+            //post data to tb_transaction_detail
+            $i = 1;
+            foreach ($this->cart->contents() as $items) {
+                $details = array(
+                    'no_order' => $this->input->post('no_order'),
+                    'product_id' => $items['id'],
+                    'qty' => $this->input->post('qty' . $i++)
+                );
+                $this->m_transaction->save_transaction_details($details);
+            }
+
+
+            $this->session->set_flashdata('messages', 'Order successfully processed!!');
+            $this->cart->destroy();
             redirect('my_order', 'refresh');
         }
     }
