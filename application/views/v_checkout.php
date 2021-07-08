@@ -134,8 +134,8 @@
 
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label>Paket</label>
-                                            <select name="paket" class="form-control">
+                                            <label>Choose Delivery</label>
+                                            <select name="delivery" class="form-control">
                                             </select>
                                         </div>
                                     </div>
@@ -227,6 +227,17 @@
                 success: function(courier_result) {
                     // console.log(courier_result)
                     $("select[name=courier]").html(courier_result);
+                }
+            });
+        });
+
+        $("select[name=courier]").on("change", function(params) {
+            $.ajax({
+                type: "POST",
+                url: "<?= base_url('rajaongkir/delivery') ?>",
+                success: function(delivery_result) {
+                    // console.log(delivery_result);
+                    $("select[name=delivery]").html(delivery_result);
                 }
             });
         });
