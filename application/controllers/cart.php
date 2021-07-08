@@ -63,4 +63,16 @@ class Cart extends CI_Controller
         $this->cart->destroy();
         redirect('cart');
     }
+
+    public function checkout()
+    {
+        //page protect
+        $this->customer_login->page_protection();
+        
+        $data = array(
+            'title' => 'Checkout',
+            'isi' => 'v_checkout'
+        );
+        $this->load->view('layout/v_wrapper_frontend', $data, FALSE);
+    }
 }

@@ -3,7 +3,7 @@
         <div class="container">
             <!-- <a href="#" class="navbar-brand text-uppercase font-weight-bold">Transparent Nav</a> -->
             <a class="navbar-brand" href="<?= base_url() ?>">
-                <img class="img-myspace" src="<?= base_url() ?>assets/img/slider/slider1.jpg" alt="">
+                <img class="img-myspace" src="<?= base_url() ?>assets/img/icon/myspace.png" alt="">
             </a>
             <button type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler navbar-toggler-right"><i class="fa fa-bars"></i></button>
 

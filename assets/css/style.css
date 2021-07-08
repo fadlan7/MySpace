@@ -139,11 +139,15 @@
 }
 
 .grid-item2 {
-    background-image: url("../img/jumbotron/jumbotron.jpg");
+    /* background-image: url("../img/jumbotron/jumbotron.jpg"); */
     background-color: #fff;
     /* background-position-y: -200px;
     background-position-x: -200px; */
     /* background-size: 50%; */
+}
+
+.bg-image {
+    background-image: url("../img/jumbotron/jumbotron.jpg");
 }
 
 

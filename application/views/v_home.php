@@ -1,4 +1,4 @@
-<div class=" grid-container">
+<div class=" grid-container" style="background-image: url('<?= base_url() ?>assets/img/jumbtron/jumbotron.jpg') ;">
     <div class="grid-item">
         <h1 class="display-4">Hello, world!</h1>
         <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
@@ -7,8 +7,22 @@
         <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
     </div>
 
-    <div class="grid-item">22121</div>
+    <div class="grid-item"></div>
 </div>
+<!-- <div id="intro-example" class="text-center bg-image">
+    <div class="mask" style="background-color: rgba(0, 0, 0, 0.7);">
+        <div class="d-flex justify-content-center align-items-center h-100">
+            <div class="text-white">
+                <h1 class="mb-3">Learn Bootstrap 5 with MDB</h1>
+                <h5 class="mb-4">
+                    Best & free guide of responsive web design
+                </h5>
+                <a class="btn btn-outline-light btn-lg m-2" href="https://www.youtube.com/watch?v=c9B4TPnak1A" role="button" rel="nofollow" target="_blank">Start tutorial</a>
+                <a class="btn btn-outline-light btn-lg m-2" href="https://mdbootstrap.com/docs/standard/" target="_blank" role="button">Download MDB UI KIT</a>
+            </div>
+        </div>
+    </div>
+</div> -->
 
 <!-- Content Wrapper. Contains page content -->
 <!-- <div class="content-wrapper bg-grey">
@@ -66,13 +80,13 @@
                         <?php foreach ($product as $key => $value) { ?>
 
                             <div class="col-12 col-sm-6 col-md-4">
-                                <?php 
+                                <?php
                                 echo form_open('cart/add');
                                 echo form_hidden('id', $value->id_product);
                                 echo form_hidden('qty', 1);
                                 echo form_hidden('price', $value->price);
                                 echo form_hidden('name', $value->product_name);
-                                echo form_hidden('redirect_page'.str_replace('index.php/','',current_url()));
+                                echo form_hidden('redirect_page' . str_replace('index.php/', '', current_url()));
                                 ?>
 
                                 <div class="card bg-light d-flex flex-fill">

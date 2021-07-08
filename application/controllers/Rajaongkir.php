@@ -86,4 +86,11 @@ class Rajaongkir extends CI_Controller
             }
         }
     }
+
+    public function courier(){
+        echo '<option value="">-Choose Courier-</option>';
+        echo '<option value="pos">Pos Indonesia</option>';
+        echo '<option value="jne">JNE</option>';
+        echo '<option value="tiki">TIKI</option>';
+    }
 }
