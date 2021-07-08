@@ -7,6 +7,7 @@ class Cart extends CI_Controller
     public function __construct()
     {
         parent::__construct();
+        $this->load->model('m_transaction');
     }
 
     public function index()
@@ -68,11 +69,65 @@ class Cart extends CI_Controller
     {
         //page protect
         $this->customer_login->page_protection();
-        
-        $data = array(
-            'title' => 'Checkout',
-            'isi' => 'v_checkout'
+
+        $this->form_validation->set_rules(
+            'province',
+            'Province',
+            'required',
+            array('required' => '%s Must be filled')
         );
-        $this->load->view('layout/v_wrapper_frontend', $data, FALSE);
+
+        $this->form_validation->set_rules(
+            'city',
+            'City',
+            'required',
+            array('required' => '%s Must be filled')
+        );
+
+        $this->form_validation->set_rules(
+            'courier',
+            'Courier',
+            'required',
+            array('required' => '%s Must be filled')
+        );
+
+        $this->form_validation->set_rules(
+            'delivery',
+            'Delivery',
+            'required',
+            array('required' => '%s Must be filled')
+        );
+
+
+
+        if ($this->form_validation->run() == FALSE) {
+            $data = array(
+                'title' => 'Checkout',
+                'isi' => 'v_checkout'
+            );
+            $this->load->view('layout/v_wrapper_frontend', $data, FALSE);
+        } else {
+            $data = array(
+                'no_order' => $this->input->post('no_order'),
+                'date_order' => $this->input->post('date_order'),
+                'recipient_name' => $this->input->post('recipient_name'),
+                'tel' => $this->input->post('tel'),
+                'province' => $this->input->post('province'),
+                'city' => $this->input->post('city'),
+                'address' => $this->input->post('address'),
+                'postal_code' => $this->input->post('postal_code'),
+                'courier' => $this->input->post('courier'),
+                'delivery' => $this->input->post('delivery'),
+                'shipping' => $this->input->post('shipping'),
+                'estimation' => $this->input->post('estimation'),
+                'weight' => $this->input->post('weight'),
+                'subtotal' => $this->input->post('subtotal'),
+                'payment_status' => '0',
+                'order_status' => '0',
+            );
+            $this->m_transaction->save_transaction($data);
+            $this->session->set_flashdata('message', 'Order successfully processed!!');
+            redirect('my_order', 'refresh');
+        }
     }
 }

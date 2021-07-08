@@ -96,9 +96,13 @@
                             <!-- /.col -->
                         </div>
                         <!-- /.row -->
-
                         <?php
-                        echo form_open('cart/checkout_process');
+                        echo validation_errors('<div class="alert alert-danger alert-dismissible">
+                             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                            ', '</div>');
+                        ?>
+                        <?php
+                        echo form_open('cart/checkout');
                         $no_order = date('Ymd') . strtoupper(random_string('alnum', 8));
 
                         ?>
@@ -148,26 +152,26 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>Recipient's Name</label>
-                                            <input type="text" name="recipient_name" class="form-control">
+                                            <input type="text" name="recipient_name" class="form-control" required>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>Recipient's Phone Number</label>
-                                            <input type="text" name="tel" class="form-control">
+                                            <input type="text" name="tel" class="form-control" required>
                                         </div>
                                     </div>
 
                                     <div class="col-md-8">
                                         <div class="form-group">
                                             <label>Address</label>
-                                            <textarea name="address" class="form-control" cols="30" rows="5"></textarea>
+                                            <textarea name="address" class="form-control" required cols="30" rows="5"></textarea>
                                         </div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label>Postal Code</label>
-                                            <input type="text" name="postal_code" class="form-control">
+                                            <input type="text" name="postal_code" class="form-control" required>
                                         </div>
                                     </div>
                                 </div>
@@ -203,8 +207,8 @@
 
                         <!-- Transaction -->
                         <input name="no_order" value="<?= $no_order ?>">
-                        <input name="estimation" >
-                        <input name="shipping" >
+                        <input name="estimation">
+                        <input name="shipping">
                         <input name="weight" value="<?= $t_weight  ?>">
                         <input name="subtotal" value="<?= $this->cart->total() ?>">
                         <input name="total">
@@ -316,6 +320,8 @@
             //estimation and shipping
             let estimation = $('option:selected', this).attr('estimation');
             $('input[name=estimation]').val(estimation);
+            $('input[name=shipping]').val(shipping);
+            $('input[name=total]').val(pay);
         });
     });
 </script>
