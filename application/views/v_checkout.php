@@ -102,11 +102,11 @@
                             <div class="col-7 invoice-col">
                                 To
                                 <address>
-                                    <strong>John Doe</strong><br>
+                                    <!-- <strong>John Doe</strong><br>
                                     795 Folsom Ave, Suite 600<br>
                                     San Francisco, CA 94107<br>
                                     Phone: (555) 539-1037<br>
-                                    Email: john.doe@example.com
+                                    Email: john.doe@example.com -->
                                 </address>
                                 <div class="row">
                                     <div class="col-md-6">
@@ -139,6 +139,13 @@
                                             </select>
                                         </div>
                                     </div>
+
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label>Address</label>
+                                            <textarea name="address" class="form-control" cols="30" rows="5"></textarea>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                             <!-- /.col -->
@@ -149,19 +156,19 @@
                                     <table class="table">
                                         <tr>
                                             <th style="width:50%">Subtotal:</th>
-                                            <td class="text-right">Rp.<?php echo $this->cart->format_number($this->cart->total()); ?></td>
+                                            <td class="font-weight-bold text-right">Rp.<?php echo $this->cart->format_number($this->cart->total()); ?></td>
                                         </tr>
                                         <tr>
                                             <th>Weight:</th>
-                                            <td class="text-right"><?php echo $t_weight ?> gr</td>
+                                            <td class="font-weight-bold text-right"><?php echo $t_weight ?> gr</td>
                                         </tr>
                                         <tr>
                                             <th>Shipping:</th>
-                                            <td class="text-right">$5.80</td>
+                                            <td class="font-weight-bold text-right" id="shipping"></td>
                                         </tr>
                                         <tr>
                                             <th>Total:</th>
-                                            <td class="text-right">$265.24</td>
+                                            <td class="font-weight-bold text-right" id="pay"></td>
                                         </tr>
                                     </table>
                                 </div>
@@ -232,14 +239,44 @@
         });
 
         $("select[name=courier]").on("change", function(params) {
+            //get courier 
+            let get_courier = $('select[name=courier]').val()
+
+            //get id_city destination
+            let city_destination = $('option:selected', 'select[name=city]').attr('id_city');
+
+            //get ongkir
+            let t_weight = <?= $t_weight ?>;
+
             $.ajax({
                 type: "POST",
                 url: "<?= base_url('rajaongkir/delivery') ?>",
+                data: 'courier=' + get_courier + '&id_city=' + city_destination + '&weight=' + t_weight,
                 success: function(delivery_result) {
                     // console.log(delivery_result);
                     $("select[name=delivery]").html(delivery_result);
                 }
             });
+        });
+
+
+        $("select[name=delivery]").on("change", function(params) {
+            //shipping
+            let shipping = $('option:selected', this).attr('shipping');
+            let reverse = shipping.toString().split('').reverse().join(''),
+                ribuan_ongkir = reverse.match(/\d{1,3}/g);
+            ribuan_ongkir = ribuan_ongkir.join(',').split('').reverse().join('');
+
+            $('#shipping').html("Rp. " + ribuan_ongkir)
+
+
+            //total
+            let pay = parseInt(shipping) + parseInt(<?= $this->cart->total(); ?>)
+            let reverse1 = pay.toString().split('').reverse().join(''),
+                ribuan_ttl = reverse1.match(/\d{1,3}/g);
+            ribuan_ttl = ribuan_ttl.join(',').split('').reverse().join('');
+            
+            $('#pay').html("Rp. " + ribuan_ttl);
         });
     });
 </script>

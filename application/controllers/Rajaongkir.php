@@ -6,6 +6,15 @@ defined('BASEPATH') or exit('No direct script access allowed');
 class Rajaongkir extends CI_Controller
 {
     private $api_key = 'e1a00d7500cbd448a553cfdc2406e698';
+
+
+    public function __construct()
+    {
+        parent::__construct();
+        $this->load->model('m_admin');
+    }
+
+
     public function province()
     {
 
@@ -82,7 +91,7 @@ class Rajaongkir extends CI_Controller
             $city = $array_response['rajaongkir']['results'];
             echo "<option value=''>-Select City-</option>";
             foreach ($city as $key => $value) {
-                echo "<option value='" . $value['city_id'] . "'>" . $value['city_name'] . "</option>";
+                echo "<option value='" . $value['city_id'] . "'  id_city='" . $value['city_id'] . "'>" . $value['city_name'] . "</option>";
             }
         }
     }
@@ -97,6 +106,12 @@ class Rajaongkir extends CI_Controller
 
     public function delivery()
     {
+        $id_hometown = $this->m_admin->data_setting()->location;
+        $courier = $this->input->post('courier');
+        $id_city = $this->input->post('id_city');
+        $weight = $this->input->post('weight');
+
+
         $curl = curl_init();
 
         curl_setopt_array($curl, array(
@@ -109,7 +124,7 @@ class Rajaongkir extends CI_Controller
             CURLOPT_TIMEOUT => 30,
             CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
             CURLOPT_CUSTOMREQUEST => "POST",
-            CURLOPT_POSTFIELDS => "origin=501&destination=114&weight=1700&courier=tiki",
+            CURLOPT_POSTFIELDS => "origin=" . $id_hometown . "&destination=" . $id_city . "&weight=" . $weight . "&courier=" . $courier,
             CURLOPT_HTTPHEADER => array(
                 "content-type: application/x-www-form-urlencoded",
                 "key: $this->api_key"
@@ -132,8 +147,8 @@ class Rajaongkir extends CI_Controller
             $delivery = $array_response['rajaongkir']['results'][0]['costs'];
             echo '<option value="">-Choose Delivery Type-</option>';
             foreach ($delivery as $key => $value) {
-                echo "<option value='" . $value['service'] . "'>";
-                echo $value['service'] . " | Rp." . $value['cost'][0]['value']. " | " . $value['cost'][0]['etd']." Hari";
+                echo "<option value='" . $value['service'] . "' shipping='" . $value['cost'][0]['value'] . "'>";
+                echo $value['service'] . " | Rp." . $value['cost'][0]['value'] . " | " . $value['cost'][0]['etd'] . " Hari";
                 echo "</option>";
             }
         }
