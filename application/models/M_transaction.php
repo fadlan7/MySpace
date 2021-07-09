@@ -54,4 +54,14 @@ class M_transaction extends CI_Model
         $this->db->order_by('id_transaction', 'desc');
         return $this->db->get()->result();
     }
+
+    public function shipped()
+    {
+        $this->db->select('*');
+        $this->db->from('tb_transaction');
+        $this->db->where('id_customer', $this->session->userdata('id_customer'));
+        $this->db->where('order_status=2');
+        $this->db->order_by('id_transaction', 'desc');
+        return $this->db->get()->result();
+    }
 }

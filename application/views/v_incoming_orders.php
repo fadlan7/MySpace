@@ -100,7 +100,7 @@
                                     <td>
                                         <?php
                                         if ($value->payment_status == 1) { ?>
-                                            <a href="<?= base_url('admin/send_order/' . $value->id_transaction) ?> " class="btn btn-sm btn-success">Send order</a>
+                                            <button class="btn btn-sm btn-success" data-toggle="modal" data-target="#send<?= $value->id_transaction ?>">Send order</button>
                                         <?php } ?>
                                     </td>
                                 </tr>
@@ -109,7 +109,38 @@
                     </table>
                 </div>
                 <div class="tab-pane fade" id="custom-tabs-one-messages" role="tabpanel" aria-labelledby="custom-tabs-one-messages-tab">
-                    Morbi turpis dolor, vulputate vitae felis non, tincidunt congue mauris. Phasellus volutpat augue id mi placerat mollis. Vivamus faucibus eu massa eget condimentum. Fusce nec hendrerit sem, ac tristique nulla. Integer vestibulum orci odio. Cras nec augue ipsum. Suspendisse ut velit condimentum, mattis urna a, malesuada nunc. Curabitur eleifend facilisis velit finibus tristique. Nam vulputate, eros non luctus efficitur, ipsum odio volutpat massa, sit amet sollicitudin est libero sed ipsum. Nulla lacinia, ex vitae gravida fermentum, lectus ipsum gravida arcu, id fermentum metus arcu vel metus. Curabitur eget sem eu risus tincidunt eleifend ac ornare magna.
+                    <table class="table table-striped table-responsive-sm table-bordered">
+                        <thead>
+                            <tr>
+                                <th>No. Order</th>
+                                <th>Date</th>
+                                <th>Courier</th>
+                                <th>Total</th>
+                                <th>Resi Number</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php
+                            foreach ($order_shipped as $key => $value) { ?>
+                                <tr>
+                                    <td><?= $value->no_order ?></td>
+                                    <td><?= $value->date_order ?></td>
+                                    <td>
+                                        <span class="font-weight-bold text-uppercase"><?= $value->courier ?></span> <br>
+                                        Delivery: <?= $value->delivery ?> <br>
+                                        Shipping: <?= number_format($value->shipping, 0) ?>
+                                    </td>
+                                    <td>
+                                        <b>Rp. <?= number_format($value->total, 0) ?></b> <br>
+                                        <span class="badge badge-success">Shipped</span>
+                                    </td>
+                                    <td>
+                                        <?= $value->resi ?>
+                                    </td>
+                                </tr>
+                            <?php } ?>
+                        </tbody>
+                    </table>
                 </div>
                 <div class="tab-pane fade" id="custom-tabs-one-settings" role="tabpanel" aria-labelledby="custom-tabs-one-settings-tab">
                     Pellentesque vestibulum commodo nibh nec blandit. Maecenas neque magna, iaculis tempus turpis ac, ornare sodales tellus. Mauris eget blandit dolor. Quisque tincidunt venenatis vulputate. Morbi euismod molestie tristique. Vestibulum consectetur dolor a vestibulum pharetra. Donec interdum placerat urna nec pharetra. Etiam eget dapibus orci, eget aliquet urna. Nunc at consequat diam. Nunc et felis ut nisl commodo dignissim. In hac habitasse platea dictumst. Praesent imperdiet accumsan ex sit amet facilisis.
@@ -159,6 +190,59 @@
                     <img class="img-fluid pad" src="<?= base_url('assets/img/payment/' . $value->proof_payment) ?>" alt="">
 
                 </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+<?php } ?>
+<!-- /.modal -->
+
+
+
+<!-- modal send order -->
+<?php foreach ($order_processed as $key => $value) { ?>
+    <div class="modal fade" id="send<?= $value->id_transaction ?>">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title"><?= $value->no_order ?></h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+
+                    <?php echo form_open('admin/send_order/' . $value->id_transaction) ?>
+                    <table class="table">
+                        <tr>
+                            <th>Courier</th>
+                            <th>:</th>
+                            <th class="text-uppercase"><?= $value->courier ?></th>
+                        </tr>
+                        <tr>
+                            <th>Delivery</th>
+                            <th>:</th>
+                            <th><?= $value->delivery ?></th>
+                        </tr>
+                        <tr>
+                            <th>Shipping</th>
+                            <th>:</th>
+                            <th>Rp. <?= number_format($value->shipping, 0) ?></th>
+                        </tr>
+                        <tr>
+                            <th>Resi Number</th>
+                            <th>:</th>
+                            <th><input name="resi" class="form-control" placeholder="Resi Number" required></th>
+                        </tr>
+                    </table>
+
+                </div>
+                <div class="modal-footer justify-content-between">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Send Order</button>
+                </div>
+                <?php echo form_close() ?>
             </div>
             <!-- /.modal-content -->
         </div>

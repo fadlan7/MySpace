@@ -58,6 +58,7 @@ class Admin extends CI_Controller
             'title' => 'Incoming Orders',
             'orders' => $this->m_incoming_orders->orders(),
             'order_processed' => $this->m_incoming_orders->order_processed(),
+            'order_shipped' => $this->m_incoming_orders->order_shipped(),
             'isi' => 'v_incoming_orders'
         );
         $this->load->view('layout/backend/v_wrapper_backend', $data, FALSE);
@@ -72,6 +73,18 @@ class Admin extends CI_Controller
         );
         $this->m_incoming_orders->order_updates($data);
         $this->session->set_flashdata('messages', 'Order successfully processed!!');
+        redirect('admin/incoming_orders');
+    }
+
+    public function send_order($id_transaction)
+    {
+        $data = array(  
+            'id_transaction ' => $id_transaction,
+            'resi' => $this->input->post('resi'),            
+            'order_status' => '2'
+        );
+        $this->m_incoming_orders->order_updates($data);
+        $this->session->set_flashdata('messages', 'Order successfully shipped!!');
         redirect('admin/incoming_orders');
     }
 }

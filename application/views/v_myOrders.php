@@ -126,7 +126,40 @@
                                     </table>
                                 </div>
                                 <div class="tab-pane fade" id="custom-tabs-one-messages" role="tabpanel" aria-labelledby="custom-tabs-one-messages-tab">
-                                    Morbi turpis dolor, vulputate vitae felis non, tincidunt congue mauris. Phasellus volutpat augue id mi placerat mollis. Vivamus faucibus eu massa eget condimentum. Fusce nec hendrerit sem, ac tristique nulla. Integer vestibulum orci odio. Cras nec augue ipsum. Suspendisse ut velit condimentum, mattis urna a, malesuada nunc. Curabitur eleifend facilisis velit finibus tristique. Nam vulputate, eros non luctus efficitur, ipsum odio volutpat massa, sit amet sollicitudin est libero sed ipsum. Nulla lacinia, ex vitae gravida fermentum, lectus ipsum gravida arcu, id fermentum metus arcu vel metus. Curabitur eget sem eu risus tincidunt eleifend ac ornare magna.
+                                    <table class="table table-striped table-responsive-sm table-bordered">
+                                        <thead>
+                                            <tr>
+                                                <th>No. Order</th>
+                                                <th>Date</th>
+                                                <th>Courier</th>
+                                                <th>Total</th>
+                                                <th>Resi Number</th>
+                                                <th>Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <?php
+                                            foreach ($shipped as $key => $value) { ?>
+                                                <tr>
+                                                    <td><?= $value->no_order ?></td>
+                                                    <td><?= $value->date_order ?></td>
+                                                    <td>
+                                                        <span class="font-weight-bold text-uppercase"><?= $value->courier ?></span> <br>
+                                                        Delivery: <?= $value->delivery ?> <br>
+                                                        Shipping: <?= number_format($value->shipping, 0) ?>
+                                                    </td>
+                                                    <td>
+                                                        <b>Rp. <?= number_format($value->total, 0) ?></b> <br>
+                                                        <span class="badge badge-success">Shipped</span> <br>
+                                                    </td>
+                                                    <td><?= $value->resi ?></td>
+                                                    <td>
+                                                        <a href="" class="btn btn-primary btn-sm">Order Received</a>
+                                                    </td>
+                                                </tr>
+                                            <?php } ?>
+                                        </tbody>
+                                    </table>
                                 </div>
                                 <div class="tab-pane fade" id="custom-tabs-one-settings" role="tabpanel" aria-labelledby="custom-tabs-one-settings-tab">
                                     Pellentesque vestibulum commodo nibh nec blandit. Maecenas neque magna, iaculis tempus turpis ac, ornare sodales tellus. Mauris eget blandit dolor. Quisque tincidunt venenatis vulputate. Morbi euismod molestie tristique. Vestibulum consectetur dolor a vestibulum pharetra. Donec interdum placerat urna nec pharetra. Etiam eget dapibus orci, eget aliquet urna. Nunc at consequat diam. Nunc et felis ut nisl commodo dignissim. In hac habitasse platea dictumst. Praesent imperdiet accumsan ex sit amet facilisis.

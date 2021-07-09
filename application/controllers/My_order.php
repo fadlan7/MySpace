@@ -19,6 +19,7 @@ class My_order extends CI_Controller
             'title' => 'My Orders',
             'not_yet_paid' => $this->m_transaction->not_yet_paid(),
             'processed' => $this->m_transaction->processed(),
+            'shipped' => $this->m_transaction->shipped(),
             'isi' => 'v_myOrders'
         );
         $this->load->view('layout/v_wrapper_frontend', $data, FALSE);

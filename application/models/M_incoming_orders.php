@@ -28,4 +28,13 @@ class M_incoming_orders extends CI_Model
         $this->db->order_by('id_transaction', 'desc');
         return $this->db->get()->result();
     }
+
+    public function order_shipped()
+    {
+        $this->db->select('*');
+        $this->db->from('tb_transaction');
+        $this->db->where('order_status=2');
+        $this->db->order_by('id_transaction', 'desc');
+        return $this->db->get()->result();
+    }
 }
