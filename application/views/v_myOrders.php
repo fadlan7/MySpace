@@ -86,7 +86,7 @@
                                                     <td>
                                                         <?php
                                                         if ($value->payment_status == 0) { ?>
-                                                            <a href="<?= base_url('my_order/pay/' . $value->id_transaction) ?>" class="btn btn-sm btn-success">Pay</a> 
+                                                            <a href="<?= base_url('my_order/pay/' . $value->id_transaction) ?>" class="btn btn-sm btn-success">Pay</a>
                                                         <?php } ?>
                                                     </td>
                                                 </tr>
@@ -95,7 +95,35 @@
                                     </table>
                                 </div>
                                 <div class="tab-pane fade" id="custom-tabs-one-profile" role="tabpanel" aria-labelledby="custom-tabs-one-profile-tab">
-                                    Mauris tincidunt mi at erat gravida, eget tristique urna bibendum. Mauris pharetra purus ut ligula tempor, et vulputate metus facilisis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Maecenas sollicitudin, nisi a luctus interdum, nisl ligula placerat mi, quis posuere purus ligula eu lectus. Donec nunc tellus, elementum sit amet ultricies at, posuere nec nunc. Nunc euismod pellentesque diam.
+                                    <table class="table table-striped table-responsive-sm table-bordered">
+                                        <thead>
+                                            <tr>
+                                                <th>No. Order</th>
+                                                <th>Date</th>
+                                                <th>Courier</th>
+                                                <th>Total</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <?php
+                                            foreach ($processed as $key => $value) { ?>
+                                                <tr>
+                                                    <td><?= $value->no_order ?></td>
+                                                    <td><?= $value->date_order ?></td>
+                                                    <td>
+                                                        <span class="font-weight-bold text-uppercase"><?= $value->courier ?></span> <br>
+                                                        Delivery: <?= $value->delivery ?> <br>
+                                                        Shipping: <?= number_format($value->shipping, 0) ?>
+                                                    </td>
+                                                    <td>
+                                                        <b>Rp. <?= number_format($value->total, 0) ?></b> <br>
+                                                        <span class="badge badge-success">Verified</span> <br>
+                                                        <span class="badge badge-primary">Processed/Packaged</span>
+                                                    </td>
+                                                </tr>
+                                            <?php } ?>
+                                        </tbody>
+                                    </table>
                                 </div>
                                 <div class="tab-pane fade" id="custom-tabs-one-messages" role="tabpanel" aria-labelledby="custom-tabs-one-messages-tab">
                                     Morbi turpis dolor, vulputate vitae felis non, tincidunt congue mauris. Phasellus volutpat augue id mi placerat mollis. Vivamus faucibus eu massa eget condimentum. Fusce nec hendrerit sem, ac tristique nulla. Integer vestibulum orci odio. Cras nec augue ipsum. Suspendisse ut velit condimentum, mattis urna a, malesuada nunc. Curabitur eleifend facilisis velit finibus tristique. Nam vulputate, eros non luctus efficitur, ipsum odio volutpat massa, sit amet sollicitudin est libero sed ipsum. Nulla lacinia, ex vitae gravida fermentum, lectus ipsum gravida arcu, id fermentum metus arcu vel metus. Curabitur eget sem eu risus tincidunt eleifend ac ornare magna.

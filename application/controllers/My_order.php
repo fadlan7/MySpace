@@ -18,6 +18,7 @@ class My_order extends CI_Controller
         $data = array(
             'title' => 'My Orders',
             'not_yet_paid' => $this->m_transaction->not_yet_paid(),
+            'processed' => $this->m_transaction->processed(),
             'isi' => 'v_myOrders'
         );
         $this->load->view('layout/v_wrapper_frontend', $data, FALSE);
@@ -37,7 +38,7 @@ class My_order extends CI_Controller
             $config['allowed_types'] = 'gif|jpg|png|jpeg|ico';
             $config['max_size']     = '5000';
             $this->upload->initialize($config);
-            $field_name = "proof_payment";
+            $field_name = 'proof_payment';
 
             if (!$this->upload->do_upload($field_name)) {
                 $data = array(

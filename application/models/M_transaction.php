@@ -21,6 +21,7 @@ class M_transaction extends CI_Model
         $this->db->select('*');
         $this->db->from('tb_transaction');
         $this->db->where('id_customer', $this->session->userdata('id_customer'));
+        $this->db->where('order_status=0');
         $this->db->order_by('id_transaction', 'desc');
         return $this->db->get()->result();
     }
@@ -42,5 +43,15 @@ class M_transaction extends CI_Model
     public function proof_payments($data){
         $this->db->where('id_transaction', $data['id_transaction']);
         $this->db->update('tb_transaction', $data);
+    }
+
+    public function processed()
+    {
+        $this->db->select('*');
+        $this->db->from('tb_transaction');
+        $this->db->where('id_customer', $this->session->userdata('id_customer'));
+        $this->db->where('order_status=1');
+        $this->db->order_by('id_transaction', 'desc');
+        return $this->db->get()->result();
     }
 }

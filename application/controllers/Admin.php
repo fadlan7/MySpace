@@ -9,7 +9,6 @@ class Admin extends CI_Controller
         parent::__construct();
         $this->load->model('m_admin');
         $this->load->model('m_incoming_orders');
-        
     }
 
     public function index()
@@ -53,12 +52,26 @@ class Admin extends CI_Controller
         }
     }
 
-    public function incoming_orders(){
+    public function incoming_orders()
+    {
         $data = array(
             'title' => 'Incoming Orders',
             'orders' => $this->m_incoming_orders->orders(),
+            'order_processed' => $this->m_incoming_orders->order_processed(),
             'isi' => 'v_incoming_orders'
         );
         $this->load->view('layout/backend/v_wrapper_backend', $data, FALSE);
+    }
+
+
+    public function process($id_transaction)
+    {
+        $data = array(  
+            'id_transaction ' => $id_transaction,
+            'order_status' => '1'
+        );
+        $this->m_incoming_orders->order_updates($data);
+        $this->session->set_flashdata('messages', 'Order successfully processed!!');
+        redirect('admin/incoming_orders');
     }
 }
