@@ -110,6 +110,7 @@ class Cart extends CI_Controller
         } else {
             //post data to tb_transaction
             $data = array(
+                'id_customer' => $this->session->userdata('id_customer'),
                 'no_order' => $this->input->post('no_order'),
                 'date_order' => date('Y-m-d'),
                 'recipient_name' => $this->input->post('recipient_name'),
@@ -124,6 +125,7 @@ class Cart extends CI_Controller
                 'estimation' => $this->input->post('estimation'),
                 'weight' => $this->input->post('weight'),
                 'subtotal' => $this->input->post('subtotal'),
+                'total' => $this->input->post('total'),
                 'payment_status' => '0',
                 'order_status' => '0',
             );

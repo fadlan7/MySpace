@@ -16,11 +16,13 @@ class Customer_login
     {
         $check = $this->ci->m_auth->customer_login($email, $password);
         if ($check) {
+            $id_customer = $check->id_customer;
             $full_name = $check->full_name;
             $email = $check->email;
             $photo = $check->photo;
 
             //session
+            $this->ci->session->set_userdata('id_customer', $id_customer);
             $this->ci->session->set_userdata('email', $email);
             $this->ci->session->set_userdata('full_name', $full_name);
             $this->ci->session->set_userdata('photo', $photo);
@@ -42,6 +44,7 @@ class Customer_login
 
     public function logout()
     {
+        $this->ci->session->unset_userdata('id_customer');
         $this->ci->session->unset_userdata('email');
         $this->ci->session->unset_userdata('full_name');
         $this->ci->session->unset_userdata('photo');
