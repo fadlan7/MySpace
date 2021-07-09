@@ -36,7 +36,7 @@
                 <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
                 <li class="nav-item">
-                    <a href="<?= base_url('admin') ?>" class="nav-link <?php if ($this->uri->segment(1) == 'admin') {
+                    <a href="<?= base_url('admin') ?>" class="nav-link <?php if ($this->uri->segment(1) == 'admin' and $this->uri->segment(2) == '') {
                                                                             echo 'active';
                                                                         } ?>" class="nav-link">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
@@ -72,9 +72,9 @@
                 </li>
 
                 <li class="nav-item">
-                    <a href="<?= base_url('admin/incoming_orders') ?>" class="nav-link <?php if ($this->uri->segment(1) == 'incoming_orders') {
-                                                                                    echo 'active';
-                                                                                } ?>" class="nav-link">
+                    <a href="<?= base_url('admin/incoming_orders') ?>" class="nav-link <?php if ($this->uri->segment(2) == 'incoming_orders' and $this->uri->segment(1) == 'admin') {
+                                                                                            echo 'active';
+                                                                                        } ?>" class="nav-link">
                         <i class="nav-icon fas fa-download"></i>
                         <p>Incoming Orders</p>
                     </a>
@@ -105,8 +105,8 @@
                 </li>
                 <li class="nav-item">
                     <a href="<?= base_url('admin/setting') ?>" class="nav-link <?php if ($this->uri->segment(2) == 'setting') {
-                                                                                        echo 'active';
-                                                                                    } ?>">
+                                                                                    echo 'active';
+                                                                                } ?>">
                         <i class="nav-icon fa fa-cog"></i>
                         <p>Raja Ongkir</p>
                     </a>

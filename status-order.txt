@@ -1,0 +1,4 @@
+0 = order
+1 = processed
+2 = shipped
+3 = completed
