@@ -50,4 +50,12 @@ class Admin extends CI_Controller
             redirect('admin/setting');
         }
     }
+
+    public function incoming_orders(){
+        $data = array(
+            'title' => 'Incoming Orders',
+            'isi' => 'v_incoming_orders'
+        );
+        $this->load->view('layout/backend/v_wrapper_backend', $data, FALSE);
+    }
 }

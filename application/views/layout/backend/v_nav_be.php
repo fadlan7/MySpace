@@ -72,6 +72,15 @@
                 </li>
 
                 <li class="nav-item">
+                    <a href="<?= base_url('admin/incoming_orders') ?>" class="nav-link <?php if ($this->uri->segment(1) == 'incoming_orders') {
+                                                                                    echo 'active';
+                                                                                } ?>" class="nav-link">
+                        <i class="nav-icon fas fa-download"></i>
+                        <p>Incoming Orders</p>
+                    </a>
+                </li>
+
+                <li class="nav-item">
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-th"></i>
                         <p>

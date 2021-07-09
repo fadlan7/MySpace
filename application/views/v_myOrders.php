@@ -36,7 +36,7 @@
                         <div class="card-header p-0 pt-1">
                             <ul class="nav nav-tabs" id="custom-tabs-one-tab" role="tablist">
                                 <li class="nav-item">
-                                    <a class="nav-link active" id="custom-tabs-one-home-tab" data-toggle="pill" href="#custom-tabs-one-home" role="tab" aria-controls="custom-tabs-one-home" aria-selected="true">Waiting for Payment</a>
+                                    <a class="nav-link active" id="custom-tabs-one-home-tab" data-toggle="pill" href="#custom-tabs-one-home" role="tab" aria-controls="custom-tabs-one-home" aria-selected="true">Orders</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" id="custom-tabs-one-profile-tab" data-toggle="pill" href="#custom-tabs-one-profile" role="tab" aria-controls="custom-tabs-one-profile" aria-selected="false">Processed</a>
@@ -71,14 +71,23 @@
                                                     <td>
                                                         <span class="font-weight-bold text-uppercase"><?= $value->courier ?></span> <br>
                                                         Delivery: <?= $value->delivery ?> <br>
-                                                        Shipping: <?= number_format($value->shipping,0) ?>
+                                                        Shipping: <?= number_format($value->shipping, 0) ?>
                                                     </td>
                                                     <td>
                                                         <b>Rp. <?= number_format($value->total, 0) ?></b> <br>
-                                                        <span class="badge badge-warning">Not yet Paid</span>
+                                                        <?php
+                                                        if ($value->payment_status == 0) { ?>
+                                                            <span class="badge badge-warning">Not yet Paid</span>
+                                                        <?php } else { ?>
+                                                            <span class="badge badge-success">Paid</span> <br>
+                                                            <span class="badge badge-secondary">Waiting for confirmation</span>
+                                                        <?php } ?>
                                                     </td>
                                                     <td>
-                                                        <a href="" class="btn btn-sm btn-success">Pay</a>
+                                                        <?php
+                                                        if ($value->payment_status == 0) { ?>
+                                                            <a href="<?= base_url('my_order/pay/' . $value->id_transaction) ?>" class="btn btn-sm btn-success">Pay</a> 
+                                                        <?php } ?>
                                                     </td>
                                                 </tr>
                                             <?php } ?>
