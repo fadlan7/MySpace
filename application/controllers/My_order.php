@@ -10,6 +10,8 @@ class My_order extends CI_Controller
     {
         parent::__construct();
         $this->load->model('m_transaction');
+        $this->load->model('m_incoming_orders');
+        
     }
 
 
@@ -20,6 +22,7 @@ class My_order extends CI_Controller
             'not_yet_paid' => $this->m_transaction->not_yet_paid(),
             'processed' => $this->m_transaction->processed(),
             'shipped' => $this->m_transaction->shipped(),
+            'completed' => $this->m_transaction->completed(),
             'isi' => 'v_myOrders'
         );
         $this->load->view('layout/v_wrapper_frontend', $data, FALSE);
@@ -76,5 +79,15 @@ class My_order extends CI_Controller
             'isi' => 'v_payment'
         );
         $this->load->view('layout/v_wrapper_frontend', $data, FALSE);
+    }
+
+    public function order_received($id_transaction){
+        $data = array(  
+            'id_transaction ' => $id_transaction,         
+            'order_status' => '3'
+        );
+        $this->m_incoming_orders->order_updates($data);
+        $this->session->set_flashdata('messages', 'Order Has Been Received!!');
+        redirect('my_order');
     }
 }

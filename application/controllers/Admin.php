@@ -59,6 +59,7 @@ class Admin extends CI_Controller
             'orders' => $this->m_incoming_orders->orders(),
             'order_processed' => $this->m_incoming_orders->order_processed(),
             'order_shipped' => $this->m_incoming_orders->order_shipped(),
+            'order_completed' => $this->m_incoming_orders->order_completed(),
             'isi' => 'v_incoming_orders'
         );
         $this->load->view('layout/backend/v_wrapper_backend', $data, FALSE);

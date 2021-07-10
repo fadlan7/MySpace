@@ -154,7 +154,7 @@
                                                     </td>
                                                     <td><?= $value->resi ?></td>
                                                     <td>
-                                                        <a href="" class="btn btn-primary btn-sm">Order Received</a>
+                                                        <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#received<?= $value->id_transaction ?>">Order Received</button>
                                                     </td>
                                                 </tr>
                                             <?php } ?>
@@ -162,7 +162,36 @@
                                     </table>
                                 </div>
                                 <div class="tab-pane fade" id="custom-tabs-one-settings" role="tabpanel" aria-labelledby="custom-tabs-one-settings-tab">
-                                    Pellentesque vestibulum commodo nibh nec blandit. Maecenas neque magna, iaculis tempus turpis ac, ornare sodales tellus. Mauris eget blandit dolor. Quisque tincidunt venenatis vulputate. Morbi euismod molestie tristique. Vestibulum consectetur dolor a vestibulum pharetra. Donec interdum placerat urna nec pharetra. Etiam eget dapibus orci, eget aliquet urna. Nunc at consequat diam. Nunc et felis ut nisl commodo dignissim. In hac habitasse platea dictumst. Praesent imperdiet accumsan ex sit amet facilisis.
+                                    <table class="table table-striped table-responsive-sm table-bordered">
+                                        <thead>
+                                            <tr>
+                                                <th>No. Order</th>
+                                                <th>Date</th>
+                                                <th>Courier</th>
+                                                <th>Total</th>
+                                                <th>Resi Number</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <?php
+                                            foreach ($completed as $key => $value) { ?>
+                                                <tr>
+                                                    <td><?= $value->no_order ?></td>
+                                                    <td><?= $value->date_order ?></td>
+                                                    <td>
+                                                        <span class="font-weight-bold text-uppercase"><?= $value->courier ?></span> <br>
+                                                        Delivery: <?= $value->delivery ?> <br>
+                                                        Shipping: <?= number_format($value->shipping, 0) ?>
+                                                    </td>
+                                                    <td>
+                                                        <b>Rp. <?= number_format($value->total, 0) ?></b> <br>
+                                                        <span class="badge badge-success">Completed</span> <br>
+                                                    </td>
+                                                    <td><?= $value->resi ?></td>
+                                                </tr>
+                                            <?php } ?>
+                                        </tbody>
+                                    </table>
                                 </div>
                             </div>
                         </div>
@@ -173,6 +202,35 @@
         </div>
     </div>
 </div>
+
+
+
+<!-- Modal -->
+<?php
+foreach ($shipped as $key => $value) { ?>
+    <div class="modal fade" id="received<?= $value->id_transaction ?>">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Order Received</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>One fine body&hellip;</p>
+                </div>
+                <div class="modal-footer justify-content-between">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">NO</button>
+                    <a href="<?= base_url('my_order/order_received/' . $value->id_transaction) ?>" class="btn btn-primary">YES</a>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+<?php } ?>
+<!-- /.modal -->
 
 
 

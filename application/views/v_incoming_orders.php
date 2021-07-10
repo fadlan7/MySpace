@@ -143,7 +143,38 @@
                     </table>
                 </div>
                 <div class="tab-pane fade" id="custom-tabs-one-settings" role="tabpanel" aria-labelledby="custom-tabs-one-settings-tab">
-                    Pellentesque vestibulum commodo nibh nec blandit. Maecenas neque magna, iaculis tempus turpis ac, ornare sodales tellus. Mauris eget blandit dolor. Quisque tincidunt venenatis vulputate. Morbi euismod molestie tristique. Vestibulum consectetur dolor a vestibulum pharetra. Donec interdum placerat urna nec pharetra. Etiam eget dapibus orci, eget aliquet urna. Nunc at consequat diam. Nunc et felis ut nisl commodo dignissim. In hac habitasse platea dictumst. Praesent imperdiet accumsan ex sit amet facilisis.
+                    <table class="table table-striped table-responsive-sm table-bordered">
+                        <thead>
+                            <tr>
+                                <th>No. Order</th>
+                                <th>Date</th>
+                                <th>Courier</th>
+                                <th>Total</th>
+                                <th>Resi Number</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php
+                            foreach ($order_completed as $key => $value) { ?>
+                                <tr>
+                                    <td><?= $value->no_order ?></td>
+                                    <td><?= $value->date_order ?></td>
+                                    <td>
+                                        <span class="font-weight-bold text-uppercase"><?= $value->courier ?></span> <br>
+                                        Delivery: <?= $value->delivery ?> <br>
+                                        Shipping: <?= number_format($value->shipping, 0) ?>
+                                    </td>
+                                    <td>
+                                        <b>Rp. <?= number_format($value->total, 0) ?></b> <br>
+                                        <span class="badge badge-success">Completed/Arrived to customer</span>
+                                    </td>
+                                    <td>
+                                        <?= $value->resi ?>
+                                    </td>
+                                </tr>
+                            <?php } ?>
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
