@@ -53,4 +53,17 @@ class Sales_report extends CI_Controller
         );
         $this->load->view('layout/backend/v_wrapper_backend', $data, FALSE);
     }
+
+    public function yearly()
+    {
+        $year = $this->input->post('year');
+
+        $data = array(
+            'title' => 'Yearly Sales Report',
+            'year' => $year,
+            'yearly_report' => $this->m_sales_report->yearly_report($year),
+            'isi' => 'backend/v_yearly_sales_report'
+        );
+        $this->load->view('layout/backend/v_wrapper_backend', $data, FALSE);
+    }    
 }

@@ -48,7 +48,7 @@
                 </div>
                 <div class="col-sm-12">
                     <div class="form-group">
-                        <button type="submit" class="btn btn-primary btn-block">Print Report</button>
+                        <button type="submit" class="btn btn-primary btn-block"><i class="fa fa-print mr-2"></i>Print Report</button>
                     </div>
                 </div>
             </div>
@@ -95,7 +95,7 @@
                 </div>
                 <div class="col-sm-12">
                     <div class="form-group">
-                        <button type="submit" class="btn btn-primary btn-block">Print Report</button>
+                        <button type="submit" class="btn btn-primary btn-block"><i class="fa fa-print mr-2"></i>Print Report</button>
                     </div>
                 </div>
             </div>
@@ -109,8 +109,29 @@
         <div class="card-header">
             <h3 class="card-title">Yearly Report</h3>
         </div>
-        <!-- /.card-header -->
         <div class="card-body">
+            <?php echo form_open('sales_report/yearly') ?>
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="form-group">
+                        <label>Year</label>
+                        <select name="year" class="form-control">
+                            <?php
+                            $start = date('Y');
+                            for ($i = $start; $i < $start + 15; $i++) {
+                                echo '<option value="' . $i . '">' . $i . '</option>';
+                            }
+                            ?>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-sm-12">
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary btn-block"><i class="fa fa-print mr-2"></i>Print Report</button>
+                    </div>
+                </div>
+            </div>
+            <?php echo form_close() ?>
         </div>
     </div>
 </div>
