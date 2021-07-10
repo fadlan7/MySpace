@@ -18,4 +18,16 @@ class M_sales_report extends CI_Model
 
     return $this->db->get()->result(); 
   }
+
+  public function Monthly_report( $month, $year)
+  {
+    $this->db->select('*');
+    $this->db->from('tb_transaction'); 
+    $this->db->where('MONTH(date_order)', $month);
+    $this->db->where('YEAR(date_order)', $year);
+    $this->db->where('order_status = 1');
+    
+
+    return $this->db->get()->result(); 
+  }
 }
