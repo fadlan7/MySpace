@@ -136,7 +136,7 @@ class Cart extends CI_Controller
             foreach ($this->cart->contents() as $items) {
                 $details = array(
                     'no_order' => $this->input->post('no_order'),
-                    'product_id' => $items['id'],
+                    'id_product' => $items['id'],
                     'qty' => $this->input->post('qty' . $i++)
                 );
                 $this->m_transaction->save_transaction_details($details);

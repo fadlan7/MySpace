@@ -40,7 +40,8 @@ class M_home extends CI_Model
         return $this->db->get()->result();
     }
 
-    public function product_details($id_product){
+    public function product_details($id_product)
+    {
         $this->db->select('*');
         $this->db->from('tb_product');
         $this->db->join('tb_category', 'tb_category.id_category = tb_product.id_category', 'left');
@@ -48,7 +49,8 @@ class M_home extends CI_Model
         return $this->db->get()->row();
     }
 
-    public function product_images($id_product){
+    public function product_images($id_product)
+    {
         $this->db->select('*');
         $this->db->from('tb_product_images');
         $this->db->where('id_product', $id_product);
