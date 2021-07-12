@@ -9,7 +9,7 @@
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="#">MySpace</a></li>
-                        <li class="breadcrumb-item"><a href="#"><?= $title ?></a></li>
+                        <li class="breadcrumb-item font-weight-bold"><a href="#"><?= $title ?></a></li>
                     </ol>
                 </div><!-- /.col -->
             </div><!-- /.row -->
@@ -68,12 +68,6 @@
                         </div>
                         <div class="row">
                             <div class="col-8">
-                                <!-- <div class="icheck-primary">
-                                    <input type="checkbox" id="agreeTerms" name="terms" value="agree">
-                                    <label for="agreeTerms">
-                                        I agree to the <a href="#">terms</a>
-                                    </label>
-                                </div> -->
                             </div>
                             <!-- /.col -->
                             <div class="col-4">

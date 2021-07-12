@@ -22,7 +22,7 @@ class Auth extends CI_Controller
         }
 
         $data = array(
-            'title' => 'User Login',
+            'title' => 'User Sign In',
         );
         $this->load->view('frontend/v_user_login', $data, FALSE);
     }

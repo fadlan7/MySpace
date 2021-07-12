@@ -83,7 +83,7 @@ class Customer extends CI_Controller
         }
 
         $data = array(
-            'title' => 'Login',
+            'title' => 'Sign In',
             'isi' => './frontend/v_customer_login'
         );
         $this->load->view('layout/v_wrapper_frontend', $data, FALSE);

@@ -88,11 +88,11 @@
     <!-- /.content-header -->
 
     <!-- Main content -->
-    <div class="content">
+    <div class="content pb-5">
         <div class="container">
 
             <!-- Default box -->
-            <div class="card card-solid">
+            <div class="card card-solid m-0">
                 <div class="card-body pb-5">
                     <div class="row">
                         <div class="col-12 col-sm-6">

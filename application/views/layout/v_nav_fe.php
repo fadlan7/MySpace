@@ -87,12 +87,14 @@
                         <!-- <div class="mr-3 line" style="font-size: 26px;color: #cdcdcd;margin-bottom: 8px;font-weight: 100;">|</div> -->
                         <?php
                         if ($this->session->userdata('email') == "") { ?>
-                            <a href="<?= base_url('customer/login') ?>" class="nav-link">
-                                <div class="d-flex">
-                                    <!-- <button class="btn font-weight-bold mr-3 text-white" style=" border-radius: 8px;font-size: 13px;background-color: #03ac0e;">Masuk</button> -->
-                                    <button class="btn font-weight-bold" style=" border: 1px solid #03ac0e;color: #03ac0e;">Login / Register </button>
-                                </div>
-                            </a>
+                            <div class="d-flex">
+                                <a href="<?= base_url('customer/login') ?>" class="nav-link p-0">
+                                    <button class="btn font-weight-bold mr-2" style="border: 1px solid #03ac0e;color: #03ac0e;">Sign In </button>
+                                </a>
+                                <a href="<?= base_url('customer/register') ?>" class="nav-link p-0">
+                                    <button class="btn font-weight-bold text-white" style="border-radius: 8px;background-color: #03ac0e;">Register</button>
+                                </a>
+                            </div>
                         <?php } else { ?>
                             <a href="#" class="nav-link" data-toggle="dropdown">
                                 <img style="width: 40px;" src="<?= base_url('assets/img/customer/' . $this->session->userdata('photo')) ?>" srcset="<?= base_url('assets/img/customer/customer1.jpg
@@ -120,8 +122,8 @@
 
 
                 <!-- <div class="mr-3 line" style="font-size: 26px;color: #cdcdcd;margin-bottom: 8px;font-weight: 100;">|</div> -->
-                <!-- 
-                <div class="d-flex">
+
+                <!-- <div class="d-flex">
                     <button class="btn font-weight-bold mr-3 text-white" style=" border-radius: 8px;font-size: 13px;background-color: #03ac0e;">Masuk</button>
                     <button class="btn font-weight-bold" style=" background-color: #fff;border: 1px solid #03ac0e;color: #03ac0e;">Daftar </button>
                 </div> -->
