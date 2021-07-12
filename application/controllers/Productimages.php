@@ -36,7 +36,7 @@ class Productimages extends CI_Controller
         if ($this->form_validation->run() == TRUE) {
             $config['upload_path'] = './assets/img/productimages/';
             $config['allowed_types'] = 'gif|jpg|png|jpeg|ico';
-            $config['max_size']     = '2000';
+            $config['max_size']     = '5000';
             $this->upload->initialize($config);
             $field_name = "productimages";
 

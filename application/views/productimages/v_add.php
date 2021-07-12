@@ -18,7 +18,7 @@
             <?php echo form_open_multipart('productimages/add/' . $product->id_product) ?>
 
             <div class="form-group">
-                <label>Image Description</label>
+                <label>Image Name</label>
                 <input type="text" name="img_desc" class="form-control" placeholder="Image Description" value="<?= set_value('img_desc') ?>" required>
             </div>
 
@@ -27,6 +27,7 @@
                     <div class="form-group">
                         <label>Product Images</label>
                         <input type="file" name="productimages" id="image_preview" class="form-control" required>
+                        <small class="form-text ">Max. 5MB</small>
                     </div>
                 </div>
 

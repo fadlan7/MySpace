@@ -85,7 +85,7 @@
                                         <td colspan="2"> </td>
                                         <td class="right"><strong>Total</strong></td>
                                         <td class="text-right"><strong><?php echo $t_weight ?> gr</strong> </td>
-                                        <td class="text-right"><strong>Rp.<?php echo $this->cart->format_number($this->cart->total()); ?></strong> </td>
+                                        <td class="text-right" colspan="2"><strong>Rp.<?php echo $this->cart->format_number($this->cart->total()); ?></strong> </td>
                                     </tr>
                                     </tbody>
                             </table>

@@ -49,6 +49,7 @@
                     <div class="form-group">
                         <label>Product Images</label>
                         <input type="file" name="product_images" id="image_preview" class="form-control">
+                        <small class="form-text ">Max. 5MB</small>
                     </div>
                 </div>
 
