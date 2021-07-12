@@ -54,18 +54,12 @@
                         ?>
 
                         <div class="card bg-light d-flex flex-fill bg-white">
+                            <img src="<?= base_url('assets/img/product/' . $value->product_images) ?>" class="card-img-top" alt="..." style="height: 270px;">
                             <div class="card-header text-muted border-bottom-0">
-                                <h2 class="lead"><b><?= $value->product_name ?></b></h2>
+                                <h5 class="card-title font-weight-bold"><?= $value->product_name ?></h5>
                             </div>
                             <div class="card-body pt-0">
-                                <div class="col">
-                                    <div class="col-7">
-                                        <p class="text-muted text-sm"><b>Category: </b> <?= $value->category_name ?> </p>
-                                    </div>
-                                    <div class="col-5 text-center">
-                                        <img src="<?= base_url('assets/img/product/' . $value->product_images) ?>" height="250px">
-                                    </div>
-                                </div>
+                                <p class="text-muted text-sm"><b>Category: </b> <?= $value->category_name ?> </p>
                             </div>
                             <div class="card-footer bg-white">
                                 <div class="row">
