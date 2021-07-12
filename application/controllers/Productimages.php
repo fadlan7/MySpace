@@ -18,7 +18,7 @@ class Productimages extends CI_Controller
         $data = array(
             'title' => 'Product Images',
             'productimages' => $this->m_productimages->get_all_data(),
-            'isi' => 'productimages/v_index'
+            'isi' => './productimages/v_index'
         );
         $this->load->view('layout/backend/v_wrapper_backend', $data, FALSE);
     }
@@ -46,7 +46,7 @@ class Productimages extends CI_Controller
                     'error_upload' => $this->upload->display_errors(),
                     'product' => $this->m_product->get_data($id_product),
                     'productimages' => $this->m_productimages->get_images($id_product),
-                    'isi' => 'productimages/v_add'
+                    'isi' => './productimages/v_add'
                 );
                 $this->load->view('layout/backend/v_wrapper_backend', $data, FALSE);
             } else {
@@ -69,7 +69,7 @@ class Productimages extends CI_Controller
             'title' => 'Add Product Images',
             'product' => $this->m_product->get_data($id_product),
             'productimages' => $this->m_productimages->get_images($id_product),
-            'isi' => 'productimages/v_add'
+            'isi' => './productimages/v_add'
         );
         $this->load->view('layout/backend/v_wrapper_backend', $data, FALSE);
     }

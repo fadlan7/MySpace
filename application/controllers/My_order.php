@@ -23,7 +23,7 @@ class My_order extends CI_Controller
             'processed' => $this->m_transaction->processed(),
             'shipped' => $this->m_transaction->shipped(),
             'completed' => $this->m_transaction->completed(),
-            'isi' => 'v_myOrders'
+            'isi' => './frontend/v_myOrders'
         );
         $this->load->view('layout/v_wrapper_frontend', $data, FALSE);
     }
@@ -50,7 +50,7 @@ class My_order extends CI_Controller
                     'orders' => $this->m_transaction->transaction_detail($id_transaction),
                     'rekening' => $this->m_transaction->rekening(),
                     'error_upload' => $this->upload->display_errors(),
-                    'isi' => 'v_payment'
+                    'isi' => './frontend/v_payment'
                 );
                 $this->load->view('layout/v_wrapper_frontend', $data, FALSE);
             } else {
@@ -76,7 +76,7 @@ class My_order extends CI_Controller
             'title' => 'Payment',
             'orders' => $this->m_transaction->transaction_detail($id_transaction),
             'rekening' => $this->m_transaction->rekening(),
-            'isi' => 'v_payment'
+            'isi' => './frontend/v_payment'
         );
         $this->load->view('layout/v_wrapper_frontend', $data, FALSE);
     }
@@ -84,9 +84,9 @@ class My_order extends CI_Controller
     public function order_received($id_transaction){
         $data = array(  
             'id_transaction ' => $id_transaction,         
-            'order_status' => '3'
+            'order_status' => 3
         );
-        $this->m_incoming_orders->order_updates($data);
+        $this->m_transaction->order_finished($data);
         $this->session->set_flashdata('messages', 'Order Has Been Received!!');
         redirect('my_order');
     }

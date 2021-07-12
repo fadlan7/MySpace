@@ -1,25 +1,43 @@
-<div class=" grid-container" style="background-image: url('<?= base_url() ?>assets/img/jumbtron/jumbotron.jpg') ;">
+<!-- <div style="background-image: url('<?= base_url("assets/img/") ?>jumbotron/jumbotron.jpg') ;">
     <div class="grid-item">
         <h1 class="display-4">Hello, world!</h1>
         <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
         <hr class="my-4">
         <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
-        <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
+        <a class="btn btn-primary btn-lg" href="#content" role="button">Learn more</a>
     </div>
 
     <div class="grid-item"></div>
-</div>
-<!-- <div id="intro-example" class="text-center bg-image">
+</div> -->
+<div id="intro-example" class="text-center">
     <div class="mask" style="background-color: rgba(0, 0, 0, 0.7);">
-        <div class="d-flex justify-content-center align-items-center h-100">
+    <img class="w-100 " style="height: 500px;" src="<?= base_url() ?>assets/img/jumbotron/jumbotron.jpg" alt="First slide">
+        
+        <!-- <div class="d-flex justify-content-center align-items-center h-100">
             <div class="text-white">
                 <h1 class="mb-3">Learn Bootstrap 5 with MDB</h1>
                 <h5 class="mb-4">
                     Best & free guide of responsive web design
                 </h5>
-                <a class="btn btn-outline-light btn-lg m-2" href="https://www.youtube.com/watch?v=c9B4TPnak1A" role="button" rel="nofollow" target="_blank">Start tutorial</a>
-                <a class="btn btn-outline-light btn-lg m-2" href="https://mdbootstrap.com/docs/standard/" target="_blank" role="button">Download MDB UI KIT</a>
+                <a class="btn btn-primary btn-lg" href="#content" role="button">Learn more</a>
             </div>
+        </div> -->
+    </div>
+</div>
+<!-- <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+    <ol class="carousel-indicators">
+        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+        
+    </ol>
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <img class="d-block w-100" src="<?= base_url() ?>assets/img/jumbotron/jumbotron.jpg" alt="First slide">
+        </div>
+        <div class="carousel-item">
+            <img class="d-block w-100" src="https://placehold.it/900x500/3c8dbc/ffffff&text=I+Love+Bootstrap" alt="Second slide">
+        </div>
+        <div class="carousel-item">
+            <img class="d-block w-100" src="https://placehold.it/900x500/f39c12/ffffff&text=I+Love+Bootstrap" alt="Third slide">
         </div>
     </div>
 </div> -->

@@ -17,7 +17,7 @@ class Cart extends CI_Controller
         }
         $data = array(
             'title' => 'Shopping Cart',
-            'isi' => 'v_cart'
+            'isi' => './frontend/v_cart'
         );
         $this->load->view('layout/v_wrapper_frontend', $data, FALSE);
     }
@@ -104,7 +104,7 @@ class Cart extends CI_Controller
         if ($this->form_validation->run() == FALSE) {
             $data = array(
                 'title' => 'Checkout',
-                'isi' => 'v_checkout'
+                'isi' => './frontend/v_checkout'
             );
             $this->load->view('layout/v_wrapper_frontend', $data, FALSE);
         } else {

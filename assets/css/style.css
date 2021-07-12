@@ -20,7 +20,7 @@
 }
 
 .navbar-brand .img-myspace {
-    width: 147px;
+    width: 100px;
 }
 
 .navbar-nav {
@@ -144,10 +144,6 @@
     /* background-position-y: -200px;
     background-position-x: -200px; */
     /* background-size: 50%; */
-}
-
-.bg-image {
-    background-image: url("../img/jumbotron/jumbotron.jpg");
 }
 
 

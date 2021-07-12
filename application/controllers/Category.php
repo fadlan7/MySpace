@@ -20,7 +20,7 @@ class Category extends CI_Controller
         $data = array(
             'title' => 'Category',
             'category' => $this->m_category->get_all_data(),
-            'isi' => 'v_category'
+            'isi' => './backend/v_category'
         );
         $this->load->view('layout/backend/v_wrapper_backend', $data, FALSE);
     }

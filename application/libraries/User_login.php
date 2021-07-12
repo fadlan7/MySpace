@@ -45,7 +45,7 @@ class User_login
         $this->ci->session->unset_userdata('username');
         $this->ci->session->unset_userdata('full_name');
         $this->ci->session->unset_userdata('user_level');
-        $this->ci->session->set_flashdata('logout_messages', 'Logout successful !!');
+        // $this->ci->session->set_flashdata('messages', 'Logout successful !!');
         redirect('auth/user_login');
     }
 }

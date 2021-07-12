@@ -48,7 +48,7 @@ class Customer_login
         $this->ci->session->unset_userdata('email');
         $this->ci->session->unset_userdata('full_name');
         $this->ci->session->unset_userdata('photo');
-        $this->ci->session->set_flashdata('messages', 'Logout successful !!');
+        // $this->ci->session->set_flashdata('messages', 'Logout successful !!');
         redirect('customer/login');
     }
 }

@@ -19,7 +19,7 @@ class User extends CI_Controller
         $data = array(
             'title' => 'User',
             'user' => $this->m_user->get_all_data(),
-            'isi' => 'v_user'
+            'isi' => './backend/v_user'
         );
         $this->load->view('layout/backend/v_wrapper_backend', $data, FALSE);
     }

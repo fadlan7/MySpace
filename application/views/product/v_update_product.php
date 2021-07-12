@@ -18,7 +18,7 @@
                 <div class="col-md-4">
                     <div class="form-group">
                         <label>Product Weight (gr)</label>
-                        <input type="number" min="0" name="product_weight" class="form-control" placeholder="Product Weight" value="<?= set_value('product_weight') ?>" required>
+                        <input type="number" min="0" name="product_weight" class="form-control" placeholder="Product Weight" value="<?= $product->product_weight ?>" required>
                     </div>
                 </div>
 

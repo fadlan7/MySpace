@@ -6,11 +6,8 @@
 
                 <div class="info-box-content">
                     <span class="info-box-text">Incoming Orders</span>
-                    <span class="info-box-number">
-                        10
-                        <small>%</small>
-                    </span>
-                    <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                    <span class="info-box-number"><?= $total_incoming_orders ?></span>
+                    <a href="<?= base_url('admin/incoming_orders') ?>" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                 </div>
                 <!-- /.info-box-content -->
             </div>
@@ -55,7 +52,7 @@
 
                 <div class="info-box-content">
                     <span class="info-box-text">Customers</span>
-                    <span class="info-box-number">2,000</span>
+                    <span class="info-box-number"><?= $total_customers ?></span>
                     <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                 </div>
                 <!-- /.info-box-content -->

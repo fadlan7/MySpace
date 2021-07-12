@@ -28,7 +28,7 @@
 
                 <?php
 
-                echo validation_errors('<div class="alert alert-warning alert-dismissible">
+                echo validation_errors('<div class="alert alert-danger alert-dismissible">
                 <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
                 <h5><i class="icon fas fa-exclamation-triangle"></i> Alert!</h5>', '</div>');
 
@@ -49,13 +49,13 @@
                     echo '</div>';
                 }
 
-                if ($this->session->flashdata('logout_messages')) {
-                    echo '<div class="alert alert-success alert-dismissible">
-                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                    <h5><i class="icon fas fa-check"></i> Success!</h5>';
-                    echo $this->session->flashdata('logout_messages');
-                    echo '</div>';
-                }
+                // if ($this->session->flashdata('messages')) {
+                //     echo '<div class="alert alert-success alert-dismissible">
+                //     <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                //     <h5><i class="icon fas fa-check"></i> Success!</h5>';
+                //     echo $this->session->flashdata('messages');
+                //     echo '</div>';
+                // }
 
                 echo form_open('auth/user_login')
                 ?>

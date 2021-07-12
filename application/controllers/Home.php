@@ -15,7 +15,7 @@ class Home extends CI_Controller
         $data = array(
             'title' => 'Home',
             'product' => $this->m_home->get_all_data(),
-            'isi' => 'v_home'
+            'isi' => './frontend/v_home'
         );
         $this->load->view('layout/v_wrapper_frontend', $data, FALSE);
     }
@@ -26,7 +26,7 @@ class Home extends CI_Controller
         $data = array(
             'title' => $category->category_name,
             'product' => $this->m_home->get_all_data_product($id_category),
-            'isi' => 'v_category_fe'
+            'isi' => './frontend/v_category_fe'
         );
         $this->load->view('layout/v_wrapper_frontend', $data, FALSE);
     }
@@ -36,7 +36,7 @@ class Home extends CI_Controller
             'title' => 'Product Details',
             'images' => $this->m_home->product_images($id_product),
             'product' => $this->m_home->product_details($id_product),
-            'isi' => 'v_detail_fe'
+            'isi' => './frontend/v_detail_fe'
         );
         $this->load->view('layout/v_wrapper_frontend', $data, FALSE);
     }

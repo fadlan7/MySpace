@@ -14,7 +14,7 @@
     <!-- Table row -->
     <div class="row">
         <div class="col-12 table-responsive mt-2">
-            <table class="table table-striped">
+            <table class="table table-striped" id="example1">
                 <thead>
                     <tr>
                         <th>#</th>
@@ -72,3 +72,24 @@
     </div>
 </div>
 <!-- /.invoice -->
+
+
+<script>
+    $(function() {
+        $("#example1").DataTable({
+            "responsive": true,
+            "lengthChange": false,
+            "autoWidth": false,
+            "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+        }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+        $('#example2').DataTable({
+            "paging": true,
+            "lengthChange": false,
+            "searching": false,
+            "ordering": true,
+            "info": true,
+            "autoWidth": false,
+            "responsive": true,
+        });
+    });
+</script>

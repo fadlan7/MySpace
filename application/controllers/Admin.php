@@ -17,7 +17,9 @@ class Admin extends CI_Controller
             'title' => 'Dashboard',
             'total_products' => $this->m_admin->total_products(),
             'total_categories' => $this->m_admin->total_categories(),
-            'isi' => 'v_admin'
+            'total_incoming_orders' => $this->m_admin->total_incoming_orders(),
+            'total_customers' => $this->m_admin->total_customers(),
+            'isi' => './backend/v_admin'
         );
         $this->load->view('layout/backend/v_wrapper_backend', $data, FALSE);
     }
@@ -35,7 +37,7 @@ class Admin extends CI_Controller
             $data = array(
                 'title' => 'setting',
                 'setting' => $this->m_admin->data_setting(),
-                'isi' => 'v_setting'
+                'isi' => './backend/v_setting'
             );
             $this->load->view('layout/backend/v_wrapper_backend', $data, FALSE);
         } else {
@@ -60,7 +62,7 @@ class Admin extends CI_Controller
             'order_processed' => $this->m_incoming_orders->order_processed(),
             'order_shipped' => $this->m_incoming_orders->order_shipped(),
             'order_completed' => $this->m_incoming_orders->order_completed(),
-            'isi' => 'v_incoming_orders'
+            'isi' => './backend/v_incoming_orders'
         );
         $this->load->view('layout/backend/v_wrapper_backend', $data, FALSE);
     }

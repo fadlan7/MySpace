@@ -74,4 +74,10 @@ class M_transaction extends CI_Model
         $this->db->order_by('id_transaction', 'desc');
         return $this->db->get()->result();
     }
+
+
+    public function order_finished($data){
+        $this->db->where('id_transaction', $data['id_transaction']);
+        $this->db->update('tb_transaction', $data);
+    }
 }

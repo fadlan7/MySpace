@@ -15,6 +15,16 @@ class M_admin extends CI_Model
         return $this->db->get('tb_category')->num_rows();
     }
 
+    public function total_incoming_orders()
+    {
+        return $this->db->get('tb_customer')->num_rows();
+    }
+
+    public function total_customers()
+    {
+        return $this->db->get('tb_transaction')->num_rows();
+    }
+
     public function data_setting()
     {
         $this->db->select('*');

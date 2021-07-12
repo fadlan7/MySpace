@@ -49,12 +49,12 @@
                                                 Rp. <?= number_format($value->price, 0) ?>
                                             </div>
                                             <div class="col-sm-6 text-right">
-                                                <a href="#" class="btn btn-sm bg-teal">
+                                                <a href="<?= base_url('home/product_details/' . $value->id_product) ?>" class="btn btn-sm bg-teal">
                                                     <i class="fas fa-eye"></i>
                                                 </a>
-                                                <a href="#" class="btn btn-sm btn-primary">
+                                                <!-- <button type="submit" class="btn btn-sm btn-primary">
                                                     <i class="fas fa-cart-plus"></i>
-                                                </a>
+                                                </button> -->
                                             </div>
                                         </div>
                                     </div>

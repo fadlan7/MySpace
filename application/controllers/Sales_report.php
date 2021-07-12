@@ -17,7 +17,7 @@ class Sales_report extends CI_Controller
     {
         $data = array(
             'title' => 'Sales Report',
-            'isi' => 'backend/v_sales_report'
+            'isi' => './backend/v_sales_report'
         );
         $this->load->view('layout/backend/v_wrapper_backend', $data, FALSE);
     }
@@ -34,7 +34,7 @@ class Sales_report extends CI_Controller
             'month' => $month,
             'year' => $year,
             'daily_report' => $this->m_sales_report->daily_report($date, $month, $year),
-            'isi' => 'backend/v_daily_sales_report'
+            'isi' => './backend/v_daily_sales_report'
         );
         $this->load->view('layout/backend/v_wrapper_backend', $data, FALSE);
     }
@@ -49,7 +49,7 @@ class Sales_report extends CI_Controller
             'month' => $month,
             'year' => $year,
             'monthly_report' => $this->m_sales_report->monthly_report( $month, $year),
-            'isi' => 'backend/v_monthly_sales_report'
+            'isi' => './backend/v_monthly_sales_report'
         );
         $this->load->view('layout/backend/v_wrapper_backend', $data, FALSE);
     }
@@ -62,7 +62,7 @@ class Sales_report extends CI_Controller
             'title' => 'Yearly Sales Report',
             'year' => $year,
             'yearly_report' => $this->m_sales_report->yearly_report($year),
-            'isi' => 'backend/v_yearly_sales_report'
+            'isi' => './backend/v_yearly_sales_report'
         );
         $this->load->view('layout/backend/v_wrapper_backend', $data, FALSE);
     }    

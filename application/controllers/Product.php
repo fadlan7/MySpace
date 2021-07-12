@@ -17,7 +17,7 @@ class Product extends CI_Controller
         $data = array(
             'title' => 'Product',
             'product' => $this->m_product->get_all_data(),
-            'isi' => 'product/v_product'
+            'isi' => './product/v_product'
         );
         $this->load->view('layout/backend/v_wrapper_backend', $data, FALSE);
     }
@@ -44,7 +44,7 @@ class Product extends CI_Controller
                     'title' => 'Add Product',
                     'category' => $this->m_category->get_all_data(),
                     'error_upload' => $this->upload->display_errors(),
-                    'isi' => 'product/v_add_product'
+                    'isi' => './product/v_add_product'
                 );
                 $this->load->view('layout/backend/v_wrapper_backend', $data, FALSE);
             } else {
@@ -69,7 +69,7 @@ class Product extends CI_Controller
         $data = array(
             'title' => 'Add Product',
             'category' => $this->m_category->get_all_data(),
-            'isi' => 'product/v_add_product'
+            'isi' => './product/v_add_product'
         );
         $this->load->view('layout/backend/v_wrapper_backend', $data, FALSE);
     }
@@ -116,7 +116,7 @@ class Product extends CI_Controller
                     'category' => $this->m_category->get_all_data(),
                     'product' => $this->m_product->get_data($id_product),
                     'error_upload' => $this->upload->display_errors(),
-                    'isi' => 'product/v_update_product'
+                    'isi' => './product/v_update_product'
                 );
                 $this->load->view('layout/backend/v_wrapper_backend', $data, FALSE);
             } else {
@@ -161,7 +161,7 @@ class Product extends CI_Controller
             'title' => 'Edit Product',
             'category' => $this->m_category->get_all_data(),
             'product' => $this->m_product->get_data($id_product),
-            'isi' => 'product/v_update_product'
+            'isi' => './product/v_update_product'
         );
         $this->load->view('layout/backend/v_wrapper_backend', $data, FALSE);
     }
