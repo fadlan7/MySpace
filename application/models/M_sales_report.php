@@ -15,7 +15,7 @@ class M_sales_report extends CI_Model
     $this->db->where('DAY(tb_transaction.date_order)', $date);
     $this->db->where('MONTH(tb_transaction.date_order)', $month);
     $this->db->where('YEAR(tb_transaction.date_order)', $year);
-    $this->db->where('order_status = 1');
+    $this->db->where('order_status = 3');
 
     return $this->db->get()->result(); 
   }
@@ -26,7 +26,7 @@ class M_sales_report extends CI_Model
     $this->db->from('tb_transaction'); 
     $this->db->where('MONTH(date_order)', $month);
     $this->db->where('YEAR(date_order)', $year);
-    $this->db->where('order_status = 1');
+    $this->db->where('order_status = 3');
     
 
     return $this->db->get()->result(); 
@@ -37,7 +37,7 @@ class M_sales_report extends CI_Model
     $this->db->select('*');
     $this->db->from('tb_transaction'); 
     $this->db->where('YEAR(date_order)', $year);
-    $this->db->where('order_status = 1');
+    $this->db->where('order_status = 3');
     
 
     return $this->db->get()->result(); 
