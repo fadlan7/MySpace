@@ -7,14 +7,14 @@ Furniture e-commerce website (Codeigniter)
 
 -  **Admin login:**
 
-
+<The  request  type>
 	email: customer@customer.com
 	password: 12345
 
 -  **Customer login:**
 
 
-
+<The  request  type>
 	username: admin
 	password: admin
 
